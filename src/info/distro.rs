@@ -12,22 +12,20 @@ fn line(file: File) -> Result<String, Box<dyn std::error::Error>> {
     Ok(line)
 }
 
+fn dist(path: &str) -> String {
+    let file = File::open(path).unwrap();
+    let line: String = line(file).unwrap();
+    let distro_vec: Vec<&str> = line.split("=").collect();
+    String::from(distro_vec[1])
+}
+
 pub fn distro() -> String {
     if metadata("/bedrock/etc/os-release").is_ok() {
-        let file = File::open("/bedrock/etc/os-release").expect("Could not read /bedrock/etc/os-release.");
-        let line: String = line(file).unwrap();
-        let distro_vec: Vec<&str> = line.split("=").collect();
-        String::from(distro_vec[1])
+        dist("/bedrock/etc/os-release")
     } else if metadata("/etc/os-release").is_ok() {
-        let file = File::open("/etc/os-release").expect("Could not read /etc/os-release.");
-        let line: String = line(file).unwrap();
-        let distro_vec: Vec<&str> = line.split("=").collect();
-        String::from(distro_vec[1])
+        dist("/etc/os-release")
     } else if metadata("/usr/lib/os-release").is_ok() {
-        let file = File::open("/usr/lib/os-release").expect("Could not read /usr/lib/os-release.");
-        let line: String = line(file).unwrap();
-        let distro_vec: Vec<&str> = line.split("=").collect();
-        String::from(distro_vec[1])
+        dist("/usr/lib/os-release")
     } else {
         "N/A (could not obtain distro name, please file a bug as your os-release file may just be in a weird place)".to_string()
     }
