@@ -36,7 +36,7 @@ OPTIONS:
 
 ## Example output
 
-`$ cargo run -- -DdehkmsuUp portage`
+`$ cargo run --features=music -- -DdehkmsuUp portage`
 
 ```
 Device:    OptiPlex 7010
