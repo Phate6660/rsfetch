@@ -42,13 +42,13 @@ OPTIONS:
 Device:    OptiPlex 7010
 Distro:    Gentoo
 Editor:    /usr/bin/emacsclient
-Shell:     /bin/bash
-User:      valley
 Hostname:  gentoo
 Kernel:    5.4.48-ck-valley
 Packages:  86 (explicit), 572 (total)
-Uptime:    4d 23h 56m
-Music:     Seether - Isolate And Medicate (Deluxe Edition) (2014) - See You At The Bottom -- Rock
+Shell:     /bin/bash
+Uptime:    5d 0h 26m
+User:      valley
+Music:     Electric Six - Señor Smoke (2005) - Devil Nights -- Indie Rock
 ```
 
 ## Features

@@ -18,12 +18,12 @@ async fn async_main(matches: ArgMatches<'_>) {
     let f1 = async_device(&matches);
     let f2 = async_distro(&matches);
     let f3 = async_editor(&matches);
-    let f4 = async_shell(&matches);
-    let f5 = async_user(&matches);
-    let f6 = async_hostname(&matches);
-    let f7 = async_kernel(&matches);
-    let f8 = async_packages(&matches);
-    let f9 = async_uptime(&matches);
+    let f4 = async_hostname(&matches);
+    let f5 = async_kernel(&matches);
+    let f6 = async_packages(&matches);
+    let f7 = async_shell(&matches);
+    let f8 = async_uptime(&matches);
+    let f9 = async_user(&matches);
     let f10 = async_music(&matches);
     futures::join!(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10);
 }
