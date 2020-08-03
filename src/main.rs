@@ -3,7 +3,7 @@ use clap::{App, Arg};
 mod info;
 use info::{
     device::device, distro::distro, env::env, hostname::hostname, kernel::kernel,
-    packages::packages,
+    packages::packages, uptime::uptime
 };
 
 fn main() {
@@ -35,33 +35,39 @@ fn main() {
         .arg(Arg::with_name("shell")
              .short("s")
              .help("Display the name of the user's shell."))
-        .arg(Arg::with_name("user")
+        .arg(Arg::with_name("uptime")
              .short("u")
+             .help("Display the uptime."))
+        .arg(Arg::with_name("user")
+             .short("U")
              .help("Display the name of the user."))
         .get_matches();
     if matches.is_present("device") {
-        println!("Device:   {}", device().trim());
+        println!("Device:    {}", device().trim());
     }
     if matches.is_present("distro") {
-        println!("Distro:   {}", distro().trim());
+        println!("Distro:    {}", distro().trim());
     }
     if matches.is_present("editor") {
-        println!("Editor:   {}", env("EDITOR".to_string()));
+        println!("Editor:    {}", env("EDITOR".to_string()));
     }
     if matches.is_present("hostname") {
-        println!("Hostname: {}", hostname().trim());
+        println!("Hostname:  {}", hostname().trim());
     }
     if matches.is_present("kernel") {
-        println!("Kernel:   {}", kernel().trim());
+        println!("Kernel:    {}", kernel().trim());
     }
     if matches.is_present("packages") {
         let manager = matches.value_of("packages").unwrap();
-        println!("Packages: {}", packages(manager).trim());
+        println!("Packages:  {}", packages(manager).trim());
     }
     if matches.is_present("shell") {
-        println!("Shell:    {}", env("SHELL".to_string()));
+        println!("Shell:     {}", env("SHELL".to_string()));
+    }
+    if matches.is_present("uptime") {
+        println!("Uptime:    {}", uptime());
     }
     if matches.is_present("user") {
-        println!("User:     {}", env("USER".to_string()));
+        println!("User:      {}", env("USER".to_string()));
     }
 }
