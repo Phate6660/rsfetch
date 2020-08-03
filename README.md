@@ -48,7 +48,7 @@ Packages:  86 (explicit), 572 (total)
 Shell:     /bin/bash
 Uptime:    5d 0h 26m
 User:      valley
-Music:     Electric Six - Señor Smoke (2005) - Devil Nights -- Indie Rock
+Music:     Franz Ferdinand - Franz Ferdinand (2004) - Take Me Out
 ```
 
 ## Features
@@ -58,4 +58,4 @@ Currently there are 2 features. At least one must be chosen.<br>
 - `nomusic`, this will cause rsfetch to not pull in the `mpd` crate, and will cause the music function to output `N/A`.
 - `music`, this will cause rsfetch to pull in the `mpd` crate, and display the music info as: 
 
-`artist - album (date) - title -- genre`
+`artist - album (date) - title`

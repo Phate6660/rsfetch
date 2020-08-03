@@ -8,8 +8,7 @@ pub fn music() -> String {
     let art = song.tags.get("Artist").unwrap_or(&na).to_string();
     let alb = song.tags.get("Album").unwrap_or(&na).to_string();
     let dat = song.tags.get("Date").unwrap_or(&na).to_string();
-    let gen = song.tags.get("Genre").unwrap_or(&na).to_string();
-    format!("{} - {} ({}) - {} -- {}", art, alb, dat, tit, gen)
+    format!("{} - {} ({}) - {}", art, alb, dat, tit)
 }
 
 #[cfg(feature = "nomusic")]
