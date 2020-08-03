@@ -1,5 +1,5 @@
-use clap::ArgMatches;
 use crate::info::env::env;
+use clap::ArgMatches;
 
 pub async fn async_editor(matches: &ArgMatches<'_>) {
     if matches.is_present("editor") {
