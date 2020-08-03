@@ -9,6 +9,5 @@ edition = "2018"
 [dependencies]
 clap = "2.33.1"
 glob = "0.3.0"
-log = "0.4.11"
 regex = "1"
 sedregex = "0.2.4"
