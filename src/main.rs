@@ -1,10 +1,30 @@
-use clap::{App, Arg};
+use clap::{App, Arg, ArgMatches};
+use futures::executor::block_on;
 
-mod info;
-use info::{
-    device::device, distro::distro, env::env, hostname::hostname, kernel::kernel,
-    packages::packages, uptime::uptime
+mod async_functions;
+use async_functions::{
+    async_device::async_device,
+    async_distro::async_distro,
+    async_env::{async_editor, async_shell, async_user},
+    async_hostname::async_hostname,
+    async_kernel::async_kernel,
+    async_packages::async_packages,
+    async_uptime::async_uptime,
 };
+mod info;
+
+async fn async_main(matches: ArgMatches<'_>) {
+    let f1 = async_device(&matches);
+    let f2 = async_distro(&matches);
+    let f3 = async_editor(&matches);
+    let f4 = async_shell(&matches);
+    let f5 = async_user(&matches);
+    let f6 = async_hostname(&matches);
+    let f7 = async_kernel(&matches);
+    let f8 = async_packages(&matches);
+    let f9 = async_uptime(&matches);
+    futures::join!(f1, f2, f3, f4, f5, f6, f7, f8, f9);
+}
 
 fn main() {
     let matches = App::new("rsfetch")
@@ -42,32 +62,5 @@ fn main() {
              .short("U")
              .help("Display the name of the user."))
         .get_matches();
-    if matches.is_present("device") {
-        println!("Device:    {}", device().trim());
-    }
-    if matches.is_present("distro") {
-        println!("Distro:    {}", distro().trim());
-    }
-    if matches.is_present("editor") {
-        println!("Editor:    {}", env("EDITOR".to_string()));
-    }
-    if matches.is_present("hostname") {
-        println!("Hostname:  {}", hostname().trim());
-    }
-    if matches.is_present("kernel") {
-        println!("Kernel:    {}", kernel().trim());
-    }
-    if matches.is_present("packages") {
-        let manager = matches.value_of("packages").unwrap();
-        println!("Packages:  {}", packages(manager).trim());
-    }
-    if matches.is_present("shell") {
-        println!("Shell:     {}", env("SHELL".to_string()));
-    }
-    if matches.is_present("uptime") {
-        println!("Uptime:    {}", uptime());
-    }
-    if matches.is_present("user") {
-        println!("User:      {}", env("USER".to_string()));
-    }
+    block_on(async_main(matches));
 }
