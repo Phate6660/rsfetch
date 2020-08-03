@@ -1,4 +1,3 @@
-use log::error;
 use regex::Regex;
 use std::fs::{metadata, File};
 use std::io::{BufReader, Read};
@@ -30,7 +29,6 @@ pub fn distro() -> String {
         let distro_vec: Vec<&str> = line.split("=").collect();
         String::from(distro_vec[1])
     } else {
-        error!("No suitable file was found. Please file a bug! Your os-release may just be in an odd location.");
-        "N/A".to_string()
+        "N/A (could not obtain distro name, please file a bug as your os-release file may just be in a weird place)".to_string()
     }
 }

@@ -1,7 +1,10 @@
 use clap::{App, Arg};
 
 mod info;
-use info::{device::device, distro::distro, env::env, hostname::hostname, kernel::kernel};
+use info::{
+    device::device, distro::distro, env::env, hostname::hostname, kernel::kernel,
+    packages::packages,
+};
 
 fn main() {
     let matches = App::new("rsfetch")
@@ -23,6 +26,12 @@ fn main() {
         .arg(Arg::with_name("kernel")
              .short("k")
              .help("Display the name of the kernel."))
+        .arg(Arg::with_name("packages")
+             .short("p")
+             .long("packages")
+             .value_name("PKG MNGR")
+             .help("Turn total package count on.")
+             .takes_value(true))
         .arg(Arg::with_name("shell")
              .short("s")
              .help("Display the name of the user's shell."))
@@ -44,6 +53,10 @@ fn main() {
     }
     if matches.is_present("kernel") {
         println!("Kernel:   {}", kernel().trim());
+    }
+    if matches.is_present("packages") {
+        let manager = matches.value_of("packages").unwrap();
+        println!("Packages: {}", packages(manager).trim());
     }
     if matches.is_present("shell") {
         println!("Shell:    {}", env("SHELL".to_string()));

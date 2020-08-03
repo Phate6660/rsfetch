@@ -1,4 +1,3 @@
-use log::error;
 use std::fs::{metadata, read_to_string};
 
 pub fn device() -> String {
@@ -7,7 +6,6 @@ pub fn device() -> String {
     } else if metadata("/sys/firmware/devicetree/base/model").is_ok() {
         read_to_string("/sys/firmware/devicetree/base/model").unwrap()
     } else {
-        error!("Could not obtain the name of the device.");
-        "N/A".to_string()
+        "N/A (could not obtain name of device)".to_string()
     }
 }
