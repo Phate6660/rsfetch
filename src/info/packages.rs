@@ -10,7 +10,7 @@ pub fn packages(manager: &str) -> String {
             let mut buf_reader = BufReader::new(file);
             let mut contents = String::new();
             buf_reader.read_to_string(&mut contents).unwrap();
-            let file_vector: Vec<&str> = contents.split("\n").collect();
+            let file_vector: Vec<&str> = contents.split('\n').collect();
 
             for entry in glob("/var/db/pkg/*/*/").expect("Failed to read glob pattern") {
                 match entry {

@@ -6,7 +6,7 @@ fn line(file: File) -> Result<String, Box<dyn std::error::Error>> {
     let mut buf_reader = BufReader::new(file);
     let mut contents = String::new();
     buf_reader.read_to_string(&mut contents)?;
-    let file_vector: Vec<&str> = contents.split("\n").collect();
+    let file_vector: Vec<&str> = contents.split('\n').collect();
     let r = Regex::new("^NAME")?;
     let line: String = file_vector.into_iter().filter(|s| r.is_match(s)).collect();
     Ok(line)
@@ -15,7 +15,7 @@ fn line(file: File) -> Result<String, Box<dyn std::error::Error>> {
 fn dist(path: &str) -> String {
     let file = File::open(path).unwrap();
     let line: String = line(file).unwrap();
-    let distro_vec: Vec<&str> = line.split("=").collect();
+    let distro_vec: Vec<&str> = line.split('=').collect();
     String::from(distro_vec[1])
 }
 
