@@ -12,7 +12,7 @@ Distro:   Gentoo
 Editor:   /usr/bin/emacsclient
 Hostname: gentoo
 Kernel:   5.4.48-ck-valley
-Packages: 572
+Packages: 86 (explicit), 572 (total)
 Shell:    /bin/bash
 User:     valley
 ```
