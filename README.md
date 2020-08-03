@@ -14,6 +14,6 @@ Hostname: gentoo
 Kernel:   5.4.48-ck-valley
 Packages: 86 (explicit), 572 (total)
 Shell:    /bin/bash
-Uptime:   4 days
+Uptime:   4d 10h 54m
 User:     valley
 ```
