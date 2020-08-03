@@ -4,7 +4,7 @@ This is a WIP rewrite of [rsfetch](https://github.com/rsfetch/rsfetch) from scra
 I've been really unhappy with the codebase now for various reasons.<br>
 It's made development for rsfetch downright unpleasant at times.
 
-`$ cargo run -- -Ddehksup portage`
+`$ cargo run -- -DdehksuUp portage`
 
 ```
 Device:    OptiPlex 7010
