@@ -3,7 +3,7 @@ use std::fs::{metadata, File};
 
 fn dist(path: &str) -> String {
     let file = File::open(path).unwrap();
-    let line: String = vector(file, 0).unwrap();
+    let line: String = vector(file, 0).unwrap(); // Expects NAME= to be on first line
     let distro_vec: Vec<&str> = line.split('=').collect();
     String::from(distro_vec[1])
 }
