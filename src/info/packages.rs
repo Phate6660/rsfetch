@@ -1,6 +1,7 @@
 use glob::glob;
 use std::fs::File;
 use std::io::{BufReader, Read};
+use std::process::Command;
 
 pub fn packages(manager: &str) -> String {
     let mut list: Vec<String> = Vec::new();
@@ -23,6 +24,18 @@ pub fn packages(manager: &str) -> String {
             let explicit = explicit_pre - 1;
             let total = list.iter().count();
             format!("{} (explicit), {} (total)", explicit, total)
+        }
+        "pacman" => {
+            let output = Command::new("pacman")
+                .args(&["-Q", "-q"])
+                .output()
+                .expect("Could not run pacman.");
+            let raw_list = vec![String::from_utf8_lossy(&output.stdout)];
+            for entry in raw_list {
+                list.push(entry.to_string());
+            }
+            let total = list.iter().count();
+            format!("{}", total)
         }
         _ => format!("N/A ({} is not supported)", manager),
     }
