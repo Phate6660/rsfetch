@@ -4,6 +4,7 @@ use futures::executor::block_on;
 mod async_functions;
 use async_functions::async_main::async_main;
 mod info;
+mod shared_functions;
 
 fn main() {
     let matches = App::new("rsfetch")

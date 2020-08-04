@@ -1,18 +1,9 @@
+use crate::shared_functions::vector;
 use std::fs::{metadata, File};
-use std::io::{BufReader, Read};
-
-fn line(file: File) -> Result<String, Box<dyn std::error::Error>> {
-    let mut buf_reader = BufReader::new(file);
-    let mut contents = String::new();
-    buf_reader.read_to_string(&mut contents)?;
-    let file_vector: Vec<&str> = contents.split('\n').collect();
-    let line = file_vector[0].to_string(); // Expects the file to start with `NAME=`
-    Ok(line)
-}
 
 fn dist(path: &str) -> String {
     let file = File::open(path).unwrap();
-    let line: String = line(file).unwrap();
+    let line: String = vector(file, 0).unwrap();
     let distro_vec: Vec<&str> = line.split('=').collect();
     String::from(distro_vec[1])
 }
