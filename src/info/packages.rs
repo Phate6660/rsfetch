@@ -37,7 +37,7 @@ pub fn packages(manager: &str) -> String {
                 .arg("list")
                 .output()
                 .expect("Could not run pip.");
-            let total = count(output) - 2;
+            let total = count(output) - 2; // -2 to deal with 2 header lines in output
             format!("{}", total)
         }
         "portage" => {
