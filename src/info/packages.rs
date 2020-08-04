@@ -6,7 +6,7 @@ use std::process::{Command, Output};
 fn count(output: Output) -> usize {
     let raw_list = String::from_utf8_lossy(&output.stdout);
     let list: Vec<&str> = raw_list.split('\n').collect();
-    list.iter().count()
+    list.iter().count() - 1 // -1 to deal with newline at end of output
 }
 
 pub fn packages(manager: &str) -> String {
@@ -37,7 +37,7 @@ pub fn packages(manager: &str) -> String {
                 .arg("list")
                 .output()
                 .expect("Could not run pip.");
-            let total = count(output) - 3;
+            let total = count(output) - 2;
             format!("{}", total)
         }
         "portage" => {
