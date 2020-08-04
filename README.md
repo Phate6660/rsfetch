@@ -4,6 +4,15 @@ This is a WIP rewrite of [rsfetch](https://github.com/rsfetch/rsfetch) from scra
 I've been really unhappy with the codebase now for various reasons.<br>
 It's made development for rsfetch downright unpleasant at times.
 
+## TODO
+
+- CPU info
+- DE/WM info
+- memory info
+- properly implement async
+- support more package managers
+- terminal info
+
 ## Help
 
 `$ cargo run -- --help`
