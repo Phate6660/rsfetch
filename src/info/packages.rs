@@ -16,24 +16,21 @@ pub fn packages(manager: &str) -> String {
                 .args(&["list", "--installed"])
                 .output()
                 .expect("Could not run apt.");
-            let total = count(output);
-            format!("{}", total)
+            format!("{}", count(output))
         }
         "dnf" => {
             let output = Command::new("dnf")
                 .args(&["list", "installed"])
                 .output()
                 .expect("Could not run dnf.");
-            let total = count(output);
-            format!("{}", total)
+            format!("{}", count(output))
         }
         "pacman" => {
             let output = Command::new("pacman")
                 .args(&["-Q", "-q"])
                 .output()
                 .expect("Could not run pacman.");
-            let total = count(output);
-            format!("{}", total)
+            format!("{}", count(output))
         }
         "pip" => {
             let output = Command::new("pip")
@@ -68,8 +65,7 @@ pub fn packages(manager: &str) -> String {
                 .arg("list-installed")
                 .output()
                 .expect("Could not run xbps-query.");
-            let total = count(output);
-            format!("{}", total)
+            format!("{}", count(output))
         }
         _ => format!("N/A ({} is not supported, please file a bug to get it added!)", manager),
     }
