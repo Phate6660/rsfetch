@@ -31,7 +31,7 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
-    -p, --packages <PKG MNGR>    Turn total package count on.
+    -p, --packages <manager>    Display package count.
 ```
 
 ## Example output
