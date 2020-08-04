@@ -4,14 +4,38 @@ This is a WIP rewrite of [rsfetch](https://github.com/rsfetch/rsfetch) from scra
 I've been really unhappy with the codebase now for various reasons.<br>
 It's made development for rsfetch downright unpleasant at times.
 
-## TODO
+Table of Contents:
 
-- CPU info
-- DE/WM info
-- memory info
-- properly implement async
-- support more package managers
-- terminal info
+- [Example Output](#example-output)
+- [Features](#features)
+- [Help](#help)
+- [TODO](#todo)
+
+## Example Output
+
+`$ cargo run --features=music -- -DdehkmsuUp portage`
+
+```
+Device:    OptiPlex 7010
+Distro:    Gentoo
+Editor:    /usr/bin/emacsclient
+Hostname:  gentoo
+Kernel:    5.4.48-ck-valley
+Packages:  86 (explicit), 572 (total)
+Shell:     /bin/bash
+Uptime:    5d 0h 26m
+User:      valley
+Music:     Franz Ferdinand - Franz Ferdinand (2004) - Take Me Out
+```
+
+## Features
+
+Currently there are 2 features. At least one must be chosen.<br>
+
+- `nomusic`, this will cause rsfetch to not pull in the `mpd` crate, and will cause the music function to output `N/A`.
+- `music`, this will cause rsfetch to pull in the `mpd` crate, and display the music info as: 
+
+`artist - album (date) - title`
 
 ## Help
 
@@ -43,28 +67,11 @@ OPTIONS:
     -p, --packages <manager>    Display package count.
 ```
 
-## Example output
+## TODO
 
-`$ cargo run --features=music -- -DdehkmsuUp portage`
-
-```
-Device:    OptiPlex 7010
-Distro:    Gentoo
-Editor:    /usr/bin/emacsclient
-Hostname:  gentoo
-Kernel:    5.4.48-ck-valley
-Packages:  86 (explicit), 572 (total)
-Shell:     /bin/bash
-Uptime:    5d 0h 26m
-User:      valley
-Music:     Franz Ferdinand - Franz Ferdinand (2004) - Take Me Out
-```
-
-## Features
-
-Currently there are 2 features. At least one must be chosen.<br>
-
-- `nomusic`, this will cause rsfetch to not pull in the `mpd` crate, and will cause the music function to output `N/A`.
-- `music`, this will cause rsfetch to pull in the `mpd` crate, and display the music info as: 
-
-`artist - album (date) - title`
+- CPU info
+- DE/WM info
+- memory info
+- properly implement async
+- support more package managers
+- terminal info
