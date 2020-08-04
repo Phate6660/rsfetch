@@ -6,8 +6,7 @@ fn line(file: File) -> Result<String, Box<dyn std::error::Error>> {
     let mut contents = String::new();
     buf_reader.read_to_string(&mut contents)?;
     let file_vector: Vec<&str> = contents.split('\n').collect();
-    // Expects the file to start with `NAME=`
-    let line = file_vector[0].to_string();
+    let line = file_vector[0].to_string(); // Expects the file to start with `NAME=`
     Ok(line)
 }
 
