@@ -4,7 +4,6 @@ use std::io::{BufReader, Read};
 use std::process::Command;
 
 pub fn packages(manager: &str) -> String {
-    let mut list: Vec<String> = Vec::new();
     match manager {
         "portage" => {
             let file = File::open("/var/lib/portage/world").unwrap();
@@ -13,6 +12,7 @@ pub fn packages(manager: &str) -> String {
             buf_reader.read_to_string(&mut contents).unwrap();
             let file_vector: Vec<&str> = contents.split('\n').collect();
 
+            let mut list: Vec<String> = Vec::new();
             for entry in glob("/var/db/pkg/*/*/").expect("Failed to read glob pattern") {
                 match entry {
                     Ok(path) => list.push(path.display().to_string()),
@@ -31,10 +31,7 @@ pub fn packages(manager: &str) -> String {
                 .output()
                 .expect("Could not run pacman.");
             let raw_list = String::from_utf8_lossy(&output.stdout);
-            let list_vec = raw_list.split('\n');
-            for entry in list_vec {
-                list.push(entry.to_string());
-            }
+            let list: Vec<&str> = raw_list.split('\n').into_iter().collect();
             let total = list.iter().count();
             format!("{}", total)
         }
