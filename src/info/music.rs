@@ -5,9 +5,9 @@ pub fn music() -> String {
     let song: Song = c.currentsong().unwrap().unwrap();
     let na = "N/A".to_string();
     let tit = song.title.as_ref().unwrap();
-    let art = song.tags.get("Artist").unwrap_or(&na).to_string();
-    let alb = song.tags.get("Album").unwrap_or(&na).to_string();
-    let dat = song.tags.get("Date").unwrap_or(&na).to_string();
+    let art = song.tags.get("Artist").unwrap_or(&na);
+    let alb = song.tags.get("Album").unwrap_or(&na);
+    let dat = song.tags.get("Date").unwrap_or(&na);
     format!("{} - {} ({}) - {}", art, alb, dat, tit)
 }
 
