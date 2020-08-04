@@ -37,8 +37,7 @@ pub fn packages(manager: &str) -> String {
                 .arg("list")
                 .output()
                 .expect("Could not run pip.");
-            let total = count(output) - 2; // -2 to deal with 2 header lines in output
-            format!("{}", total)
+            format!("{}", count(output) - 2) // -2 to deal with 2 header lines in output
         }
         "portage" => {
             let file = File::open("/var/lib/portage/world").unwrap();
@@ -56,9 +55,7 @@ pub fn packages(manager: &str) -> String {
             }
 
             let explicit_pre = file_vector.iter().count();
-            let explicit = explicit_pre - 1;
-            let total = list.iter().count();
-            format!("{} (explicit), {} (total)", explicit, total)
+            format!("{} (explicit), {} (total)", explicit_pre - 1, list.iter().count())
         }
         "xbps" => {
             let output = Command::new("xbps-query")
