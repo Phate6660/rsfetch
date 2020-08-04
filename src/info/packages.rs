@@ -30,7 +30,7 @@ pub fn packages(manager: &str) -> String {
                 .args(&["-Q", "-q"])
                 .output()
                 .expect("Could not run pacman.");
-            let raw_list = vec![String::from_utf8_lossy(&output.stdout)];
+            let raw_list = String::from_utf8_lossy(&output.stdout).split('\n');
             for entry in raw_list {
                 list.push(entry.to_string());
             }
