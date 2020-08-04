@@ -1,4 +1,3 @@
-use regex::Regex;
 use std::fs::{metadata, File};
 use std::io::{BufReader, Read};
 
@@ -7,8 +6,8 @@ fn line(file: File) -> Result<String, Box<dyn std::error::Error>> {
     let mut contents = String::new();
     buf_reader.read_to_string(&mut contents)?;
     let file_vector: Vec<&str> = contents.split('\n').collect();
-    let r = Regex::new("^NAME")?;
-    let line: String = file_vector.into_iter().filter(|s| r.is_match(s)).collect();
+    // Expects the file to start with `NAME=`
+    let line = file_vector[0].to_string();
     Ok(line)
 }
 

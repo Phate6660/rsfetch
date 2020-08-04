@@ -283,7 +283,6 @@ dependencies = [
  "futures",
  "glob",
  "mpd",
- "regex",
  "sedregex",
 ]
 
