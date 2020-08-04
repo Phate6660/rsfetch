@@ -11,6 +11,13 @@ fn count(output: Output) -> usize {
 
 pub fn packages(manager: &str) -> String {
     match manager {
+        "apk" => {
+            let output = Command::new("apk")
+                .arg("info")
+                .output()
+                .expect("Could not run apk.");
+            format!("{}", count(output))
+        }
         "apt" => {
             let output = Command::new("apt")
                 .args(&["list", "--installed"])
@@ -23,6 +30,13 @@ pub fn packages(manager: &str) -> String {
                 .args(&["list", "installed"])
                 .output()
                 .expect("Could not run dnf.");
+            format!("{}", count(output))
+        }
+        "eopkg" => {
+            let output = Command::new("eopkg")
+                .arg("list-installed")
+                .output()
+                .expect("Could not run eopkg.");
             format!("{}", count(output))
         }
         "pacman" => {
@@ -55,6 +69,13 @@ pub fn packages(manager: &str) -> String {
             }
 
             format!("{} (explicit), {} (total)", file_vector.iter().count() - 1, list.iter().count())
+        }
+        "rpm" => {
+            let output = Command::new("rpm")
+                .args(&["-q", "-a"])
+                .output()
+                .expect("Could not run rpm.");
+            format!("{}", count(output))
         }
         "xbps" => {
             let output = Command::new("xbps-query")

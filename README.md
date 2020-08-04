@@ -73,5 +73,4 @@ OPTIONS:
 - DE/WM info
 - memory info
 - properly implement async
-- support more package managers
 - terminal info
