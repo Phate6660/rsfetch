@@ -11,6 +11,22 @@ fn count(output: Output) -> usize {
 
 pub fn packages(manager: &str) -> String {
     match manager {
+        "apt" => {
+            let output = Command::new("apt")
+                .args(&["list", "--installed"])
+                .output()
+                .expect("Could not run apt.");
+            let total = count(output);
+            format!("{}", total)
+        }
+        "dnf" => {
+            let output = Command::new("dnf")
+                .args(&["list", "installed"])
+                .output()
+                .expect("Could not run dnf.");
+            let total = count(output);
+            format!("{}", total)
+        }
         "pacman" => {
             let output = Command::new("pacman")
                 .args(&["-Q", "-q"])
@@ -46,6 +62,14 @@ pub fn packages(manager: &str) -> String {
             let explicit = explicit_pre - 1;
             let total = list.iter().count();
             format!("{} (explicit), {} (total)", explicit, total)
+        }
+        "xbps" => {
+            let output = Command::new("xbps-query")
+                .arg("list-installed")
+                .output()
+                .expect("Could not run xbps-query.");
+            let total = count(output);
+            format!("{}", total)
         }
         _ => format!("N/A ({} is not supported, please file a bug to get it added!)", manager),
     }
