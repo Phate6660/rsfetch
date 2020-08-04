@@ -54,8 +54,7 @@ pub fn packages(manager: &str) -> String {
                 }
             }
 
-            let explicit_pre = file_vector.iter().count();
-            format!("{} (explicit), {} (total)", explicit_pre - 1, list.iter().count())
+            format!("{} (explicit), {} (total)", file_vector.iter().count() - 1, list.iter().count())
         }
         "xbps" => {
             let output = Command::new("xbps-query")
