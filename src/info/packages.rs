@@ -11,6 +11,22 @@ fn count(output: Output) -> usize {
 
 pub fn packages(manager: &str) -> String {
     match manager {
+        "pacman" => {
+            let output = Command::new("pacman")
+                .args(&["-Q", "-q"])
+                .output()
+                .expect("Could not run pacman.");
+            let total = count(output);
+            format!("{}", total)
+        }
+        "pip" => {
+            let output = Command::new("pip")
+                .arg("list")
+                .output()
+                .expect("Could not run pip.");
+            let total = count(output) - 3;
+            format!("{}", total)
+        }
         "portage" => {
             let file = File::open("/var/lib/portage/world").unwrap();
             let mut buf_reader = BufReader::new(file);
@@ -31,22 +47,6 @@ pub fn packages(manager: &str) -> String {
             let total = list.iter().count();
             format!("{} (explicit), {} (total)", explicit, total)
         }
-        "pacman" => {
-            let output = Command::new("pacman")
-                .args(&["-Q", "-q"])
-                .output()
-                .expect("Could not run pacman.");
-            let total = count(output);
-            format!("{}", total)
-        }
-        "pip" => {
-            let output = Command::new("pip")
-                .arg("list")
-                .output()
-                .expect("Could not run pip.");
-            let total = count(output) - 3;
-            format!("{}", total)
-        }
-        _ => format!("N/A ({} is not supported)", manager),
+        _ => format!("N/A ({} is not supported, please file a bug to get it added!)", manager),
     }
 }
