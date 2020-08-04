@@ -30,8 +30,9 @@ pub fn packages(manager: &str) -> String {
                 .args(&["-Q", "-q"])
                 .output()
                 .expect("Could not run pacman.");
-            let raw_list = String::from_utf8_lossy(&output.stdout).split('\n');
-            for entry in raw_list {
+            let raw_list = String::from_utf8_lossy(&output.stdout);
+            let list_vec = raw_list.split('\n');
+            for entry in list_vec {
                 list.push(entry.to_string());
             }
             let total = list.iter().count();
