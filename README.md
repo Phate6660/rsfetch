@@ -13,19 +13,20 @@ Table of Contents:
 
 ## Example Output
 
-`$ cargo run --features=music -- -DdehkmsuUp portage`
+`$ cargo run --features=music -- -cDdehkmsuUp portage`
 
 ```
+CPU:       Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz
 Device:    OptiPlex 7010
 Distro:    Gentoo
 Editor:    /usr/bin/emacsclient
 Hostname:  gentoo
 Kernel:    5.4.48-ck-valley
-Packages:  86 (explicit), 572 (total)
+Packages:  87 (explicit), 573 (total)
 Shell:     /bin/bash
-Uptime:    5d 0h 26m
+Uptime:    6d 0h 51m
 User:      valley
-Music:     Franz Ferdinand - Franz Ferdinand (2004) - Take Me Out
+Music:     Machine Head - Burn My Eyes (1994) - I'm Your God Now
 ```
 
 ## Features
@@ -51,6 +52,7 @@ USAGE:
     rsfetch [FLAGS] [OPTIONS]
 
 FLAGS:
+    -c               Display the model of the CPU.
     -D               Display the name of the device.
     -d               Display the name of the distro.
     -e               Display the name of the user's editor. Must have the $EDITOR environmental variable set.
@@ -69,7 +71,7 @@ OPTIONS:
 
 ## TODO
 
-- CPU info
+- CPU info (implemented, only tested on Gentoo)
 - DE/WM info
 - memory info
 - properly implement async

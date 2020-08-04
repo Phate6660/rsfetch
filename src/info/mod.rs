@@ -1,3 +1,4 @@
+pub mod cpu;
 pub mod device;
 pub mod distro;
 pub mod env;
