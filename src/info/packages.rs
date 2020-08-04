@@ -1,7 +1,13 @@
 use glob::glob;
 use std::fs::File;
 use std::io::{BufReader, Read};
-use std::process::Command;
+use std::process::{Command, Output};
+
+fn count(output: Output) -> usize {
+    let raw_list = String::from_utf8_lossy(&output.stdout);
+    let list: Vec<&str> = raw_list.split('\n').into_iter().collect();
+    list.iter().count()
+}
 
 pub fn packages(manager: &str) -> String {
     match manager {
@@ -30,9 +36,15 @@ pub fn packages(manager: &str) -> String {
                 .args(&["-Q", "-q"])
                 .output()
                 .expect("Could not run pacman.");
-            let raw_list = String::from_utf8_lossy(&output.stdout);
-            let list: Vec<&str> = raw_list.split('\n').into_iter().collect();
-            let total = list.iter().count();
+            let total = count(output);
+            format!("{}", total)
+        }
+        "pip" => {
+            let output = Command::new("pip")
+                .arg("list")
+                .output()
+                .expect("Could not run pip.");
+            let total = count(output) - 3;
             format!("{}", total)
         }
         _ => format!("N/A ({} is not supported)", manager),
