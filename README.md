@@ -76,6 +76,7 @@ OPTIONS:
 
 ## TODO
 
+- Better output (customizable?)
 - CPU info (implemented, only tested on Gentoo)
 - DE/WM info (implemented, only tested on my setup)
 - memory info (partially implemented, shows total in MBs)
