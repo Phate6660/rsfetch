@@ -6,7 +6,7 @@ fn de() -> String {
     env::var("XDG_DESKTOP_SESSION")
         .or_else(|_| env::var("XDG_CURRENT_DESKTOP"))
         .or_else(|_| env::var("DESKTOP_SESSION"))
-        .unwrap_or("N/A".to_string())
+        .unwrap_or_else(|_| "N/A".to_string())
 }
 
 fn wm() -> Result<String, Box<dyn std::error::Error>> {
