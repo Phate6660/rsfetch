@@ -33,7 +33,7 @@ Music:        Machine Head - Supercharger (2001) - Only The Names
 
 ## Features
 
-Currently there are 2 features. At least one must be chosen.<br>
+Currently there are 2 features. One or the other must be chosen.<br>
 
 - `nomusic`, this will cause rsfetch to not pull in the `mpd` crate, and will cause the music function to output `N/A`.
 - `music`, this will cause rsfetch to pull in the `mpd` crate, and display the music info as: 
