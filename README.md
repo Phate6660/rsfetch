@@ -72,7 +72,7 @@ Music:
 Output:
 
 - `plain_output`, see example above for how it looks.
-- `pretty_output`, this will pull in the prettytable-rs crate, see example above for how it looks.
+- `pretty_output`, this will pull in the `prettytable-rs` crate, see example above for how it looks.
 
 ## Help
 
