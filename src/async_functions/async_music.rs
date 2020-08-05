@@ -7,10 +7,10 @@ pub async fn async_music(matches: &ArgMatches<'_>) {
         use prettytable::{format, Table};
         let mut table = Table::new();
         let format = format::FormatBuilder::new()
-            .column_separator('|')
+            .column_separator('│')
             .borders(' ')
             .separators(&[format::LinePosition::Bottom],
-                        format::LineSeparator::new('-', '+', '+', '+'))
+                        format::LineSeparator::new('─', '+', '+', '+'))
             .padding(0, 8)
             .build();
         table.set_format(format);

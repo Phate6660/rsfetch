@@ -21,11 +21,11 @@ pub fn table(pad: usize) -> Table {
     use prettytable::format;
     let mut table = Table::new();
     let format = format::FormatBuilder::new()
-        .column_separator('|')
+        .column_separator('│')
         .borders(' ')
         .separators(
             &[format::LinePosition::Intern],
-            format::LineSeparator::new('-', '+', '+', '+'),
+            format::LineSeparator::new('─', '+', '+', '+'),
         )
         .padding(0, pad)
         .build();
