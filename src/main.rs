@@ -1,7 +1,7 @@
 #[cfg(feature = "pretty_output")]
 #[macro_use]
 extern crate prettytable;
-    
+
 use clap::{App, Arg};
 use futures::executor::block_on;
 

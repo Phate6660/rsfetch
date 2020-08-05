@@ -9,8 +9,10 @@ pub async fn async_cpu(matches: &ArgMatches<'_>) {
         let format = format::FormatBuilder::new()
             .column_separator('│')
             .borders(' ')
-            .separators(&[format::LinePosition::Top],
-                        format::LineSeparator::new('─', '+', '+', '+'))
+            .separators(
+                &[format::LinePosition::Top],
+                format::LineSeparator::new('─', '+', '+', '+'),
+            )
             .padding(0, 10)
             .build();
         table.set_format(format);

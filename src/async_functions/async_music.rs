@@ -9,8 +9,10 @@ pub async fn async_music(matches: &ArgMatches<'_>) {
         let format = format::FormatBuilder::new()
             .column_separator('│')
             .borders(' ')
-            .separators(&[format::LinePosition::Bottom],
-                        format::LineSeparator::new('─', '+', '+', '+'))
+            .separators(
+                &[format::LinePosition::Bottom],
+                format::LineSeparator::new('─', '+', '+', '+'),
+            )
             .padding(0, 8)
             .build();
         table.set_format(format);
