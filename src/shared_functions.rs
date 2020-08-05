@@ -13,3 +13,22 @@ pub fn line(file: File, line: usize) -> String {
     let file_vector: Vec<&str> = contents.split('\n').collect();
     file_vector[line].to_string()
 }
+
+#[cfg(feature = "pretty_output")]
+use prettytable::Table;
+#[cfg(feature = "pretty_output")]
+pub fn table(pad: usize) -> Table {
+    use prettytable::format;
+    let mut table = Table::new();
+    let format = format::FormatBuilder::new()
+        .column_separator('|')
+        .borders(' ')
+        .separators(
+            &[format::LinePosition::Intern],
+            format::LineSeparator::new('-', '+', '+', '+'),
+        )
+        .padding(0, pad)
+        .build();
+    table.set_format(format);
+    table
+}
