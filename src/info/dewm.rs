@@ -1,6 +1,6 @@
+use crate::shared_functions::read;
 use std::env;
 use std::fs::{metadata, File};
-use std::io::{BufReader, Read};
 
 fn de() -> String {
     env::var("XDG_DESKTOP_SESSION")
@@ -13,9 +13,7 @@ fn wm() -> Result<String, Box<dyn std::error::Error>> {
     let path = format!("{}/.xinitrc", env::var("HOME").unwrap());
     if metadata(&path).is_ok() {
         let file = File::open(&path).unwrap();
-        let mut buf_reader = BufReader::new(file);
-        let mut contents = String::new();
-        buf_reader.read_to_string(&mut contents)?;
+        let contents = read(file).unwrap();
         let line = contents.lines().last().unwrap();
         Ok(line.split(' ').last().unwrap().to_string())
     } else {
@@ -29,5 +27,5 @@ pub fn environment() -> String {
         wm().unwrap()
     } else {
         de
-    } 
+    }
 }
