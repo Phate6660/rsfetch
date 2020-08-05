@@ -5,6 +5,7 @@ pub mod async_env;
 pub mod async_hostname;
 pub mod async_kernel;
 pub mod async_main;
+pub mod async_memory;
 pub mod async_music;
 pub mod async_packages;
 pub mod async_uptime;

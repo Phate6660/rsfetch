@@ -22,11 +22,12 @@ Distro:    Gentoo
 Editor:    /usr/bin/emacsclient
 Hostname:  gentoo
 Kernel:    5.4.48-ck-valley
+Memory:    15971 MB
 Packages:  87 (explicit), 573 (total)
 Shell:     /bin/bash
-Uptime:    6d 0h 51m
+Uptime:    6d 4h 33m
 User:      valley
-Music:     Machine Head - Burn My Eyes (1994) - I'm Your God Now
+Music:     Machine Head - Burn My Eyes (1994) - Block
 ```
 
 ## Features
@@ -59,7 +60,8 @@ FLAGS:
         --help       Prints help information
     -h               Display the hostname of the device.
     -k               Display the name of the kernel.
-    -m               Display currently playing music. Only mpd is supported. Must be built with the music feature.
+    -m               Display free/total memory.
+    -M               Display currently playing music. Only mpd is supported. Must be built with the music feature.
     -s               Display the name of the user's shell.
     -u               Display the uptime.
     -U               Display the name of the user.
@@ -73,6 +75,6 @@ OPTIONS:
 
 - CPU info (implemented, only tested on Gentoo)
 - DE/WM info
-- memory info
+- memory info (partially implemented, shows total in MBs)
 - properly implement async
 - terminal info
