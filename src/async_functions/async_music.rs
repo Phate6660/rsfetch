@@ -8,12 +8,12 @@ pub async fn async_music(matches: &ArgMatches<'_>) {
         let mut table = Table::new();
         let format = format::FormatBuilder::new()
             .column_separator('│')
-            .borders(' ')
+            .borders('│')
             .separators(
                 &[format::LinePosition::Bottom],
                 format::LineSeparator::new('─', '+', '+', '+'),
             )
-            .padding(0, 8)
+            .padding(1, 8)
             .build();
         table.set_format(format);
         table.add_row(row!["Music", &music().as_str()]);

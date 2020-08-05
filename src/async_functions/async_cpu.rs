@@ -8,12 +8,12 @@ pub async fn async_cpu(matches: &ArgMatches<'_>) {
         let mut table = Table::new();
         let format = format::FormatBuilder::new()
             .column_separator('│')
-            .borders(' ')
+            .borders('│')
             .separators(
                 &[format::LinePosition::Top],
                 format::LineSeparator::new('─', '+', '+', '+'),
             )
-            .padding(0, 10)
+            .padding(1, 10)
             .build();
         table.set_format(format);
         table.add_row(row!["CPU", &cpu().trim()]);

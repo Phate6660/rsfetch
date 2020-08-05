@@ -27,7 +27,7 @@ pub fn table(pad: usize) -> Table {
             &[format::LinePosition::Intern],
             format::LineSeparator::new('─', '+', '+', '+'),
         )
-        .padding(0, pad)
+        .padding(1, pad)
         .build();
     table.set_format(format);
     table

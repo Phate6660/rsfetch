@@ -41,21 +41,22 @@ Music:        The Prodigy - The Fat of the Land (1997) - Breathe
 `$ cargo run --features=music,pretty_output -- -cDdEehkmMsuUp portage`
 
 ```
-+─────────────+─────────────────────────────────────────────────+
- CPU          │Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz
- Device       │OptiPlex 7010
- Environment  │bspwm
- Distro       │Gentoo
- Editor       │/usr/bin/emacsclient
- Hostname     │gentoo
- Kernel       │5.4.48-ck-valley
- Memory       │15971 MB
- Packages     │88 (explicit), 576 (total)
- Shell        │/bin/bash
- Uptime       │6d 23h 47m
- User         │valley
- Music        │The Prodigy - The Fat of the Land (1997) - Serial Thrilla
-+─────────────+─────────────────────────────────────────────────────────────────+
++──────────────+──────────────────────────────────────────────────+
+│ CPU          │ Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz          │
+  Device       │ OptiPlex 7010
+  Environment  │ bspwm
+  Distro       │ Gentoo
+  Editor       │ /usr/bin/emacsclient
+  Hostname     │ gentoo
+  Kernel       │ 5.4.48-ck-valley
+  Memory       │ 15971 MB
+  Packages     │ 88 (explicit), 576 (total)
+  Shell        │ /bin/bash
+  Uptime       │ 7d 2h 9m
+  User         │ valley
+│ Music        │ Static-X - Cult Of Static (2009) - Z28        │
++──────────────+───────────────────────────────────────────────+
+
 ```
 
 ## Features
