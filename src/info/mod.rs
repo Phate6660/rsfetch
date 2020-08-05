@@ -1,5 +1,6 @@
 pub mod cpu;
 pub mod device;
+pub mod dewm;
 pub mod distro;
 pub mod env;
 pub mod hostname;

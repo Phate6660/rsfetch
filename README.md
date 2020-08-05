@@ -13,21 +13,22 @@ Table of Contents:
 
 ## Example Output
 
-`$ cargo run --features=music -- -cDdehkmMsuUp portage`
+`$ cargo run --features=music -- -cDdEehkmMsuUp portage`
 
 ```
-CPU:       Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz
-Device:    OptiPlex 7010
-Distro:    Gentoo
-Editor:    /usr/bin/emacsclient
-Hostname:  gentoo
-Kernel:    5.4.48-ck-valley
-Memory:    15971 MB
-Packages:  87 (explicit), 573 (total)
-Shell:     /bin/bash
-Uptime:    6d 4h 33m
-User:      valley
-Music:     Machine Head - Burn My Eyes (1994) - Block
+CPU:          Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz
+Device:       OptiPlex 7010
+Environment:  bspwm
+Distro:       Gentoo
+Editor:       /usr/bin/emacsclient
+Hostname:     gentoo
+Kernel:       5.4.48-ck-valley
+Memory:       15971 MB
+Packages:     88 (explicit), 576 (total)
+Shell:        /bin/bash
+Uptime:       6d 8h 20m
+User:         valley
+Music:        Machine Head - Supercharger (2001) - Only The Names
 ```
 
 ## Features
@@ -56,7 +57,9 @@ FLAGS:
     -c               Display the model of the CPU.
     -D               Display the name of the device.
     -d               Display the name of the distro.
-    -e               Display the name of the user's editor. Must have the $EDITOR environmental variable set.
+    -E               Display the name of the user's editor. Must have the $EDITOR environmental variable set.
+    -e               Display the user's environment. First checks for a DE, before resorting to parsing your
+                     $HOME/.xinitrc for your WM.
         --help       Prints help information
     -h               Display the hostname of the device.
     -k               Display the name of the kernel.
@@ -74,7 +77,7 @@ OPTIONS:
 ## TODO
 
 - CPU info (implemented, only tested on Gentoo)
-- DE/WM info
+- DE/WM info (implemented, only tested on my setup)
 - memory info (partially implemented, shows total in MBs)
 - properly implement async
 - terminal info
