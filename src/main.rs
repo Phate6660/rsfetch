@@ -1,16 +1,14 @@
 #[cfg(feature = "pretty_output")]
 #[macro_use] extern crate prettytable;
 
-use clap::{App, Arg};
-use futures::executor::block_on;
+use clap::Arg;
 
 mod async_functions;
-use async_functions::async_main::async_main;
 mod info;
 mod shared_functions;
 
 fn main() {
-    let matches = App::new("rsfetch")
+    let matches = clap::App::new("rsfetch")
         .version("0.1.0")
         .author("Phate6660 <https://pages.codeberg.org/Phate6660>")
         .about("\nAn info fetch tool written in Rust. Everything is off by default, enable what you want.")
@@ -57,5 +55,5 @@ fn main() {
              .short("U")
              .help("Display the name of the user."))
         .get_matches();
-    block_on(async_main(matches));
+    futures::executor::block_on(async_functions::async_main::async_main(matches));
 }
