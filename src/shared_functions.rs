@@ -15,17 +15,16 @@ pub fn line(file: File, line: usize) -> String {
 }
 
 #[cfg(feature = "pretty_output")]
-use prettytable::{format::LinePosition, Table};
+use prettytable::Table;
 #[cfg(feature = "pretty_output")]
-pub fn table(border: char, pos: LinePosition, pad: usize) -> Table {
-    use prettytable::format;
+pub fn table(border: char, pos: prettytable::format::LinePosition, pad: usize) -> Table {
     let mut table = Table::new();
-    let format = format::FormatBuilder::new()
+    let format = prettytable::format::FormatBuilder::new()
         .column_separator('│')
         .borders(border)
         .separators(
             &[pos],
-            format::LineSeparator::new('─', '+', '+', '+'),
+            prettytable::format::LineSeparator::new('─', '+', '+', '+'),
         )
         .padding(1, pad)
         .build();
