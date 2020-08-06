@@ -1,8 +1,7 @@
 #[cfg(feature = "music")]
 pub fn music() -> String {
-    use mpd::{Client, Song};
-    let mut c = Client::connect("127.0.0.1:6600").unwrap();
-    let song: Song = c.currentsong().unwrap().unwrap();
+    let mut c = mpd::Client::connect("127.0.0.1:6600").unwrap();
+    let song: mpd::Song = c.currentsong().unwrap().unwrap();
     let na = "N/A".to_string();
     let tit = song.title.as_ref().unwrap();
     let art = song.tags.get("Artist").unwrap_or(&na);

@@ -1,9 +1,8 @@
-use crate::shared_functions::line;
-use std::fs::{metadata, File};
+use std::fs::metadata;
 
 fn dist(path: &str) -> String {
-    let file = File::open(path).unwrap();
-    let line: String = line(file, 0); // Expects NAME= to be on first line
+    let file = std::fs::File::open(path).unwrap();
+    let line: String = crate::shared_functions::line(file, 0); // Expects NAME= to be on first line
     let distro_vec: Vec<&str> = line.split('=').collect();
     String::from(distro_vec[1])
 }

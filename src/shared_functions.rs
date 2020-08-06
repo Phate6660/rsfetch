@@ -1,8 +1,8 @@
 use std::fs::File;
-use std::io::{BufReader, Read};
 
 pub fn read(file: File) -> Result<String, Box<dyn std::error::Error>> {
-    let mut buf_reader = BufReader::new(file);
+    use std::io::Read;
+    let mut buf_reader = std::io::BufReader::new(file);
     let mut contents = String::new();
     buf_reader.read_to_string(&mut contents)?;
     Ok(contents)
