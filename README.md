@@ -14,6 +14,7 @@ According to [`hyperfine`](https://github.com/sharkdp/hyperfine) anyways.
 Table of Contents:
 
 - [Example Output](#example-output)
+- [Extra Info](#extra-info)
 - [Features](#features)
 - [Help](#help)
 - [TODO](#todo)
@@ -58,6 +59,23 @@ Music:        The Prodigy - The Fat of the Land (1997) - Breathe
 +──────────────+───────────────────────────────────────────────+
 
 ```
+
+## Extra info
+
+Crate deps and binary size depending on features for rsfetch:
+
+- `music,plain_output`: 50 crates, 3.7 MB
+- `music,pretty_output`: 69 crates, 3.9MB
+- `nomusic,plain_output`: 46 crates, 3.6 MB
+- `nomusic,pretty_output`: 65 crates, 3.9 MB
+
+Crates explicitely used, and why:
+
+- `clap`: CLI framwork
+- `futures`: async, but I'm like 80% sure I didn't implement it right
+- `glob`: parsing package list for portage
+- `mpd`: completely optional, used for the feature `music`
+- `prettytable-rs`: completely optional, used for the feature `pretty_output`
 
 ## Features
 
