@@ -1,5 +1,4 @@
 use std::env;
-use std::fs::{metadata, File};
 
 fn de() -> String {
     env::var("XDG_DESKTOP_SESSION")
@@ -10,8 +9,8 @@ fn de() -> String {
 
 fn wm() -> String {
     let path = format!("{}/.xinitrc", env::var("HOME").unwrap());
-    if metadata(&path).is_ok() {
-        let file = File::open(&path).unwrap();
+    if std::fs::metadata(&path).is_ok() {
+        let file = std::fs::File::open(&path).unwrap();
         let contents = crate::shared_functions::read(file).unwrap();
         let line = contents.lines().last().unwrap();
         line.split(' ').last().unwrap().to_string()
