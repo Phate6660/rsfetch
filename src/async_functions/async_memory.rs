@@ -5,7 +5,8 @@ use clap::ArgMatches;
 pub async fn async_memory(matches: &ArgMatches<'_>) {
     if matches.is_present("memory") {
         use crate::shared_functions::table;
-        let mut table = table(7);
+        use prettytable::format::LinePosition::Intern;
+        let mut table = table(' ', Intern, 7);
         table.add_row(row!["Memory", &memory().trim()]);
         table.printstd();
     }

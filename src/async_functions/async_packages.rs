@@ -5,8 +5,9 @@ use clap::ArgMatches;
 pub async fn async_packages(matches: &ArgMatches<'_>) {
     if matches.is_present("packages") {
         use crate::shared_functions::table;
+        use prettytable::format::LinePosition::Intern;
         let manager = matches.value_of("packages").unwrap();
-        let mut table = table(5);
+        let mut table = table(' ', Intern, 5);
         table.add_row(row!["Packages", &packages(manager).trim()]);
         table.printstd();
     }

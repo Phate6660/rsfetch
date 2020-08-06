@@ -4,18 +4,9 @@ use clap::ArgMatches;
 #[cfg(feature = "pretty_output")]
 pub async fn async_music(matches: &ArgMatches<'_>) {
     if matches.is_present("music") {
-        use prettytable::{format, Table};
-        let mut table = Table::new();
-        let format = format::FormatBuilder::new()
-            .column_separator('│')
-            .borders('│')
-            .separators(
-                &[format::LinePosition::Bottom],
-                format::LineSeparator::new('─', '+', '+', '+'),
-            )
-            .padding(1, 8)
-            .build();
-        table.set_format(format);
+        use crate::shared_functions::table;
+        use prettytable::format::LinePosition::Bottom;
+        let mut table = table('│', Bottom, 8);
         table.add_row(row!["Music", &music().as_str()]);
         table.printstd();
     }

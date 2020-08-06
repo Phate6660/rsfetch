@@ -5,7 +5,8 @@ use clap::ArgMatches;
 pub async fn async_hostname(matches: &ArgMatches<'_>) {
     if matches.is_present("hostname") {
         use crate::shared_functions::table;
-        let mut table = table(5);
+        use prettytable::format::LinePosition::Intern;
+        let mut table = table(' ', Intern, 5);
         table.add_row(row!["Hostname", &hostname().trim()]);
         table.printstd();
     }

@@ -8,7 +8,7 @@ It's made development for rsfetch downright unpleasant at times.
 
 A blazing fast (<5 ms) information fetching utility.<br>
 As of writing this, plain output takes a total of 1.9 ms to display all available fields.<br>
-While pretty output takes a total of 3 ms to display all fields.<br>
+While pretty output takes a total of 2.8 ms to display all fields.<br>
 According to [`hyperfine`](https://github.com/sharkdp/hyperfine) anyways.
 
 Table of Contents:
