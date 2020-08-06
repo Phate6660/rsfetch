@@ -65,7 +65,7 @@ Music:        The Prodigy - The Fat of the Land (1997) - Breathe
 Crate deps and binary size depending on features for rsfetch:
 
 - `music,plain_output`: 50 crates, 3.7 MB
-- `music,pretty_output`: 69 crates, 3.9MB
+- `music,pretty_output`: 69 crates, 3.9 MB
 - `nomusic,plain_output`: 46 crates, 3.6 MB
 - `nomusic,pretty_output`: 65 crates, 3.9 MB
 
