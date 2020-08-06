@@ -71,7 +71,7 @@ Crate deps and binary size depending on features for rsfetch:
 
 Crates explicitely used, and why:
 
-- `clap`: CLI framwork
+- `clap`: CLI framework
 - `futures`: async, but I'm like 80% sure I didn't implement it right
 - `glob`: parsing package list for portage
 - `mpd`: completely optional, used for the feature `music`
