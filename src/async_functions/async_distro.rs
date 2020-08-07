@@ -5,7 +5,7 @@ use clap::ArgMatches;
 pub async fn async_distro(matches: &ArgMatches<'_>) {
     if matches.is_present("distro") {
         let mut table = crate::shared_functions::table(' ', prettytable::format::LinePosition::Intern, 7);
-        table.add_row(row!["Distro", &distro().trim()]);
+        table.add_row(row!["Distro", &distro().trim().replace("\"", "")]);
         table.printstd();
     }
 }
