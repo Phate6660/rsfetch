@@ -20,17 +20,19 @@ pub fn cpu(matches: &clap::ArgMatches<'_>) -> String {
         };
         let temp = if matches.is_present("temperature") {
             if metadata("/sys/class/thermal/thermal_zone0/temp").is_ok() {
-                let raw_temp = File::open("/sys/class/thermal/thermal_zone0/temp").unwrap();
-                let raw_temp = crate::shared_functions::read(raw_temp).unwrap().trim().parse::<i64>().unwrap();
-                let temp = raw_temp / 1000;
-                let unit = matches.value_of("temperature").unwrap();
-                if unit == "C" {
-                    format!("[{}*C]", temp)
-                } else if unit == "F" {
-                    let temp = temp * 9 / 5 + 32;
-                    format!("[{}*F]", temp)
-                } else {
-                    "N/A (invalid temperature unit)".to_string()
+                {
+                    let file = File::open("/sys/class/thermal/thermal_zone0/temp").unwrap();
+                    let raw_temp = crate::shared_functions::read(file).unwrap().trim().parse::<i64>().unwrap();
+                    let temp_pre = raw_temp / 1000;
+                    let unit = matches.value_of("temperature").unwrap();
+                    if unit == "C" {
+                        format!("[{}*C]", temp_pre)
+                    } else if unit == "F" {
+                        let temp_pre = temp_pre * 9 / 5 + 32;
+                        format!("[{}*F]", temp_pre)
+                    } else {
+                        "N/A (invalid temperature unit)".to_string()
+                    }
                 }
             } else {
                 "N/A (could not read /sys/class/thermal/thermal_zone0/temp)".to_string()
