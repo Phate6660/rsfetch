@@ -1,9 +1,23 @@
+use std::fs::{File, metadata};
+
+fn get(file: File, x: usize) -> String {
+    let line = crate::shared_functions::line(file, x);
+    let line_vec: Vec<&str> = line.split(':').collect();
+    line_vec[1].to_string()
+}
+
 pub fn cpu() -> String {
-    if std::fs::metadata("/proc/cpuinfo").is_ok() {
-        let file = std::fs::File::open("/proc/cpuinfo").unwrap();
-        let line = crate::shared_functions::line(file, 4); // Expects model name to be on 5th line
-        let line_vec: Vec<&str> = line.split(':').collect();
-        line_vec[1].to_string()
+    if metadata("/proc/cpuinfo").is_ok() {
+        let file = File::open("/proc/cpuinfo").unwrap();
+        if metadata("/sys/firmware/devicetree/base/model").is_ok() {
+            if std::fs::read_to_string("/sys/firmware/devicetree/base/model").unwrap().starts_with("Raspberry") {
+                get(file, 2)
+            } else {
+                get(file, 4)
+            }
+        } else {
+            get(file, 4)
+        }
     } else {
         "N/A (could not obtain cpu model)".to_string()
     }
