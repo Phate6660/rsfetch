@@ -11,12 +11,12 @@ pub fn cpu() -> String {
         let file = File::open("/proc/cpuinfo").unwrap();
         if metadata("/sys/firmware/devicetree/base/model").is_ok() {
             if std::fs::read_to_string("/sys/firmware/devicetree/base/model").unwrap().starts_with("Raspberry") {
-                get(file, 2)
+                get(file, 1) // Line 2
             } else {
-                get(file, 4)
+                get(file, 4) // Line 5
             }
         } else {
-            get(file, 4)
+            get(file, 4) // Line 5
         }
     } else {
         "N/A (could not obtain cpu model)".to_string()
