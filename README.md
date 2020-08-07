@@ -135,3 +135,4 @@ OPTIONS:
 - memory info (partially implemented, shows total in MBs)
 - properly implement async
 - terminal info
+- temperatures (addition to CPU field?)
