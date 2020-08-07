@@ -2,9 +2,7 @@
 
 This is a WIP rewrite of [rsfetch](https://github.com/rsfetch/rsfetch) from scratch.<br>
 I've been really unhappy with the codebase now for various reasons.<br>
-It's made development for rsfetch downright unpleasant at times.<br>
-Notice: I am switching to FreeBSD sometime soon. Expect full support for BSD.<br>
-Anything Linux-specific may take longer to be tested.
+It's made development for rsfetch downright unpleasant at times.
 
 ----
 
