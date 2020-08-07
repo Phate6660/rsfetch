@@ -125,6 +125,7 @@ FLAGS:
 
 OPTIONS:
     -p, --packages <manager>    Display package count.
+    -t, --temperature <C/F>     Display CPU temp for Raspberry Pi, must have CPU field enabled.
 ```
 
 ## TODO
@@ -135,4 +136,4 @@ OPTIONS:
 - memory info (partially implemented, shows total in MBs)
 - properly implement async
 - terminal info
-- temperatures (addition to CPU field?)
+- temperatures (implemented, only tested on Raspberry Pi 4)
