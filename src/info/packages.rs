@@ -1,6 +1,4 @@
 use glob::glob;
-use std::fs::File;
-use std::io::{BufReader, Read};
 use std::process::{Command, Output};
 
 fn count(output: Output) -> usize {
@@ -61,11 +59,8 @@ pub fn packages(manager: &str) -> String {
             format!("{}", count(output) - 2) // -2 to deal with header lines in output
         }
         "portage" => {
-            let file = File::open("/var/lib/portage/world").unwrap();
-            let mut buf_reader = BufReader::new(file);
-            let mut contents = String::new();
-            buf_reader.read_to_string(&mut contents).unwrap();
-            let file_vector: Vec<&str> = contents.split('\n').collect();
+            let content = crate::shared_functions::read(std::fs::File::open("/var/lib/portage/world").unwrap()).unwrap();
+            let file_vector: Vec<&str> = content.split('\n').collect();
 
             let mut list: Vec<String> = Vec::new();
             for entry in glob("/var/db/pkg/*/*/").expect("Failed to read glob pattern") {
