@@ -6,17 +6,26 @@ fn get(file: File, x: usize) -> String {
     line_vec[1].to_string()
 }
 
+fn format(info: String) -> String {
+    info.replace("(TM)", "")
+        .replace("(R)", "")
+        .replace("     ", " ")
+}
+
 pub fn cpu(matches: &clap::ArgMatches<'_>) -> String {
     if metadata("/proc/cpuinfo").is_ok() {
         let file = File::open("/proc/cpuinfo").unwrap();
         let model = if metadata("/sys/firmware/devicetree/base/model").is_ok() {
             if read_to_string("/sys/firmware/devicetree/base/model").unwrap().starts_with("Raspberry") {
-                get(file, 1) // Line 2
+                let info = get(file, 1); // Line 2
+                format(info)
             } else {
-                get(file, 4) // Line 5
+                let info = get(file, 4); // Line 5
+                format(info)
             }
         } else {
-            get(file, 4) // Line 5
+            let info = get(file, 4); // Line 5
+            format(info)
         };
         let temp = if matches.is_present("temperature") {
             if metadata("/sys/class/thermal/thermal_zone0/temp").is_ok() {

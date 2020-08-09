@@ -24,7 +24,7 @@ Table of Contents:
 `$ cargo run --features=music,plain_output -- -cDdEehkmMstuUp portage`
 
 ```
-CPU:          Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz
+CPU:          Intel Core i5-3470 CPU @ 3.20GHz
 Device:       OptiPlex 7010
 Environment:  bspwm
 Distro:       Gentoo
@@ -44,7 +44,7 @@ Music:        Machine Head - Supercharger (2001) - Bulldozer
 
 ```
 +──────────────+──────────────────────────────────────────────────+
-│ CPU          │ Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz          │
+│ CPU          │ Intel Core i5-3470 CPU @ 3.20GHz          │
   Device       │ OptiPlex 7010
   Environment  │ bspwm
   Distro       │ Gentoo
