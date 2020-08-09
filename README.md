@@ -134,9 +134,5 @@ OPTIONS:
 ## TODO
 
 - Better output (implemented, might expand in future)
-- CPU info (implemented, only tested on Gentoo)
-- DE/WM info (implemented, only tested on my setup)
 - memory info (partially implemented, shows total in MBs)
 - properly implement async
-- terminal info (implemented)
-- temperatures (implemented, only tested on Raspberry Pi 4)
