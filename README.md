@@ -43,7 +43,7 @@ Music:        Machine Head - Supercharger (2001) - Bulldozer
 `$ cargo run --features=music,pretty_output -- -cDdEehkmMstuUp portage`
 
 ```
-+──────────────+──────────────────────────────────────────────────+
++──────────────+───────────────────────────────────────────+
 │ CPU          │ Intel Core i5-3470 CPU @ 3.20GHz          │
   Device       │ OptiPlex 7010
   Environment  │ bspwm
