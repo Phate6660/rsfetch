@@ -40,7 +40,7 @@ pub fn cpu(matches: &clap::ArgMatches<'_>) -> String {
         } else {
             "".to_string()
         };
-        format!("{} {}", model, temp).to_string()
+        format!("{} {}", model, temp)
     } else {
         "N/A (could not obtain cpu model)".to_string()
     }

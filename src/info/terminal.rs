@@ -22,10 +22,9 @@ fn info(process_name: String, process_id: String) -> String {
     {
         let path = format!("/proc/{}/status", process_id);
         let new_ppid = ppid(File::open(path).unwrap());
-        let new_name = name(new_ppid);
-        return new_name
+        name(new_ppid)
     } else {
-        return process_name
+        process_name
     }
 }
 
