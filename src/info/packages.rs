@@ -23,7 +23,7 @@ pub fn packages(manager: &str) -> String {
                 .args(&["list", "--installed"])
                 .output()
                 .expect("Could not run apt.");
-            format!("{}", count(output))
+            format!("{}", count(output) - 1) // -1 to deal with "Listing..."
         }
         "dnf" => {
             let output = Command::new("dnf")
@@ -58,7 +58,7 @@ pub fn packages(manager: &str) -> String {
                 .arg("list")
                 .output()
                 .expect("Could not run pip.");
-            format!("{}", count(output) - 2) // -2 to deal with 2 header lines in output
+            format!("{}", count(output) - 2) // -2 to deal with header lines in output
         }
         "portage" => {
             let file = File::open("/var/lib/portage/world").unwrap();
