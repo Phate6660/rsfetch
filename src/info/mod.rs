@@ -8,4 +8,5 @@ pub mod kernel;
 pub mod memory;
 pub mod music;
 pub mod packages;
+pub mod terminal;
 pub mod uptime;

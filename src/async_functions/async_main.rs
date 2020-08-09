@@ -9,8 +9,9 @@ pub async fn async_main(matches: clap::ArgMatches<'_>) {
     let f8 = crate::async_functions::async_memory::async_memory(&matches);
     let f9 = crate::async_functions::async_packages::async_packages(&matches);
     let f10 = crate::async_functions::async_env::async_shell(&matches);
-    let f11 = crate::async_functions::async_uptime::async_uptime(&matches);
-    let f12 = crate::async_functions::async_env::async_user(&matches);
-    let f13 = crate::async_functions::async_music::async_music(&matches);
-    futures::join!(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13);
+    let f11 = crate::async_functions::async_terminal::async_terminal(&matches);
+    let f12 = crate::async_functions::async_uptime::async_uptime(&matches);
+    let f13 = crate::async_functions::async_env::async_user(&matches);
+    let f14 = crate::async_functions::async_music::async_music(&matches);
+    futures::join!(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14);
 }

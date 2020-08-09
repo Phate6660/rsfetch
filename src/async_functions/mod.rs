@@ -10,3 +10,4 @@ pub mod async_memory;
 pub mod async_music;
 pub mod async_packages;
 pub mod async_uptime;
+pub mod async_terminal;

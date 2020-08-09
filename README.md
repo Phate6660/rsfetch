@@ -21,7 +21,7 @@ Table of Contents:
 
 ## Example Output
 
-`$ cargo run --features=music,plain_output -- -cDdEehkmMsuUp portage`
+`$ cargo run --features=music,plain_output -- -cDdEehkmMstuUp portage`
 
 ```
 CPU:          Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz
@@ -32,14 +32,15 @@ Editor:       /usr/bin/emacsclient
 Hostname:     gentoo
 Kernel:       5.4.48-ck-valley
 Memory:       15971 MB
-Packages:     88 (explicit), 576 (total)
+Packages:     87 (explicit), 575 (total)
 Shell:        /bin/bash
-Uptime:       6d 23h 35m
+Terminal:     xterm
+Uptime:       1d 19h 24m
 User:         valley
-Music:        The Prodigy - The Fat of the Land (1997) - Breathe
+Music:        Machine Head - Supercharger (2001) - Bulldozer
 ```
 
-`$ cargo run --features=music,pretty_output -- -cDdEehkmMsuUp portage`
+`$ cargo run --features=music,pretty_output -- -cDdEehkmMstuUp portage`
 
 ```
 +──────────────+──────────────────────────────────────────────────+
@@ -51,12 +52,13 @@ Music:        The Prodigy - The Fat of the Land (1997) - Breathe
   Hostname     │ gentoo
   Kernel       │ 5.4.48-ck-valley
   Memory       │ 15971 MB
-  Packages     │ 88 (explicit), 576 (total)
+  Packages     │ 87 (explicit), 575 (total)
   Shell        │ /bin/bash
-  Uptime       │ 7d 2h 9m
+  Terminal     │ xterm
+  Uptime       │ 1d 19h 24m
   User         │ valley
-│ Music        │ Static-X - Cult Of Static (2009) - Z28        │
-+──────────────+───────────────────────────────────────────────+
+│ Music        │ Machine Head - Supercharger (2001) - Bulldozer        │
++──────────────+───────────────────────────────────────────────────────+
 
 ```
 
@@ -119,13 +121,14 @@ FLAGS:
     -m               Display free/total memory.
     -M               Display currently playing music. Only mpd is supported. Must be built with the music feature.
     -s               Display the name of the user's shell.
+    -t               Display the name of the user's terminal.
     -u               Display the uptime.
     -U               Display the name of the user.
     -V, --version    Prints version information
 
 OPTIONS:
     -p, --packages <manager>    Display package count.
-    -t, --temperature <C/F>     Display CPU temp for Raspberry Pi, must have CPU field enabled.
+    -T, --temperature <C/F>     Display CPU temp for Raspberry Pi, must have CPU field enabled.
 ```
 
 ## TODO
@@ -135,5 +138,5 @@ OPTIONS:
 - DE/WM info (implemented, only tested on my setup)
 - memory info (partially implemented, shows total in MBs)
 - properly implement async
-- terminal info
+- terminal info (implemented, only tested on my setup)
 - temperatures (implemented, only tested on Raspberry Pi 4)
