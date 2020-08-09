@@ -32,6 +32,13 @@ pub fn packages(manager: &str) -> String {
                 .expect("Could not run dnf.");
             format!("{}", count(output))
         }
+        "dpkg" => {
+            let output = Command::new("dpkg-query")
+                .args(&["-f", "'${binary:Package}\n'", "-W"])
+                .output()
+                .expect("Could not run dpkg-query.");
+            format!("{}", count(output))
+        }
         "eopkg" => {
             let output = Command::new("eopkg")
                 .arg("list-installed")
