@@ -21,8 +21,8 @@ fn info(process_name: String, process_id: String) -> String {
         || process_name.starts_with("tmux")
     {
         let path = format!("/proc/{}/status", process_id);
-        let new_ppid = ppid(File::open(path).unwrap());
-        let new_name = name(new_ppid.clone());
+        let new_ppid = ppid(File::open(path).unwrap()).trim().replace("\n", "");
+        let new_name = name(new_ppid.clone()).trim().replace("\n", "");
         if new_name.ends_with("sh")
             || new_name == "ion"
             || new_name == "screen"
@@ -30,13 +30,13 @@ fn info(process_name: String, process_id: String) -> String {
             || new_name.starts_with("tmux")
         {
             let path = format!("/proc/{}/status", new_ppid);
-            let new_ppid = ppid(File::open(path).unwrap());
-            name(new_ppid)
+            let new_ppid = ppid(File::open(path).unwrap()).trim().replace("\n", "");
+            name(new_ppid).trim().replace("\n", "")
         } else {
-            new_name
+            new_name.trim().replace("\n", "")
         }
     } else {
-        process_name
+        process_name.trim().replace("\n", "")
     }
 }
 
