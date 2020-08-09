@@ -46,7 +46,12 @@ pub fn terminal() -> String {
     if std::fs::metadata(path.clone()).is_ok() {
         let process_id = ppid(File::open(path).unwrap()).trim().replace("\n", "");
         let process_name = name(process_id.clone()).trim().replace("\n", "");
-        info(process_name, process_id)
+        let info = info(process_name, process_id);
+        if info == "systemd" || info == "" {
+            "N/A (could not determine the terminal, this could be an issue of using tmux)".to_string()
+        } else {
+            info
+        }
     } else {
         format!("N/A (could not read {})", path)
     }
