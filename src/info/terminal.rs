@@ -22,7 +22,19 @@ fn info(process_name: String, process_id: String) -> String {
     {
         let path = format!("/proc/{}/status", process_id);
         let new_ppid = ppid(File::open(path).unwrap());
-        name(new_ppid)
+        let new_name = name(new_ppid.clone());
+        if new_name.ends_with("sh")
+            || new_name == "ion"
+            || new_name == "screen"
+            || new_name == "tmux"
+            || new_name.starts_with("tmux")
+        {
+            let path = format!("/proc/{}/status", new_ppid);
+            let new_ppid = ppid(File::open(path).unwrap());
+            name(new_ppid)
+        } else {
+            new_name
+        }
     } else {
         process_name
     }
