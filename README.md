@@ -138,5 +138,5 @@ OPTIONS:
 - DE/WM info (implemented, only tested on my setup)
 - memory info (partially implemented, shows total in MBs)
 - properly implement async
-- terminal info (implemented, only tested on my setup)
+- terminal info (implemented)
 - temperatures (implemented, only tested on Raspberry Pi 4)

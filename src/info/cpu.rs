@@ -42,6 +42,6 @@ pub fn cpu(matches: &clap::ArgMatches<'_>) -> String {
         };
         format!("{} {}", model, temp)
     } else {
-        "N/A (could not obtain cpu model)".to_string()
+        "N/A (could not read /proc/cpuinfo)".to_string()
     }
 }
