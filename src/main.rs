@@ -3,7 +3,7 @@
 
 use clap::Arg;
 
-mod async_functions;
+mod output;
 mod info;
 mod shared_functions;
 
@@ -64,5 +64,5 @@ fn main() {
              .short("U")
              .help("Display the name of the user."))
         .get_matches();
-    futures::executor::block_on(async_functions::async_main::async_main(matches));
+    output::main::main(matches);
 }

@@ -2,7 +2,7 @@ use crate::info::cpu::cpu;
 use clap::ArgMatches;
 
 #[cfg(feature = "pretty_output")]
-pub async fn async_cpu(matches: &ArgMatches<'_>) {
+pub fn output_cpu(matches: &ArgMatches) {
     if matches.is_present("cpu") {
         let mut table = crate::shared_functions::table('│', prettytable::format::LinePosition::Top, 10);
         table.add_row(row!["CPU", &cpu(&matches).trim()]);
@@ -11,7 +11,7 @@ pub async fn async_cpu(matches: &ArgMatches<'_>) {
 }
 
 #[cfg(feature = "plain_output")]
-pub async fn async_cpu(matches: &ArgMatches<'_>) {
+pub fn output_cpu(matches: &ArgMatches) {
     if matches.is_present("cpu") {
         println!("CPU:          {}", cpu(&matches).trim());
     }

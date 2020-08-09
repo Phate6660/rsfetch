@@ -2,8 +2,7 @@ use std::fs::File;
 
 fn ppid(file: File) -> String {
     let ppid = crate::shared_functions::line(file, 6);
-    let ppid: Vec<&str> = ppid.split(':').collect();
-    ppid[1].to_string()
+    ppid.split(':').collect::<Vec<&str>>()[1].to_string()
 }
 
 fn name(ppid: String) -> String {

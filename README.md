@@ -66,15 +66,14 @@ Music:        Machine Head - Supercharger (2001) - Bulldozer
 
 Crate deps and binary size depending on features for rsfetch:
 
-- `music,plain_output`: 50 crates, 3.7 MB
-- `music,pretty_output`: 69 crates, 3.9 MB
-- `nomusic,plain_output`: 46 crates, 3.6 MB
-- `nomusic,pretty_output`: 65 crates, 3.9 MB
+- `music,plain_output`: 19 crates, 3.7 MB
+- `music,pretty_output`: 41 crates, 3.9 MB
+- `nomusic,plain_output`: 15 crates, 3.6 MB
+- `nomusic,pretty_output`: 37 crates, 3.9 MB
 
 Crates explicitely used, and why:
 
 - `clap`: CLI framework
-- `futures`: async, but I'm like 80% sure I didn't implement it right
 - `glob`: parsing package list for portage
 - `mpd`: completely optional, used for the feature `music`
 - `prettytable-rs`: completely optional, used for the feature `pretty_output`
@@ -135,4 +134,4 @@ OPTIONS:
 
 - Better output (implemented, might expand in future)
 - memory info (partially implemented, shows total in MBs)
-- properly implement async
+- implement async

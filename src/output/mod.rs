@@ -1,0 +1,13 @@
+pub mod cpu;
+pub mod device;
+pub mod dewm;
+pub mod distro;
+pub mod env;
+pub mod hostname;
+pub mod kernel;
+pub mod main;
+pub mod memory;
+pub mod music;
+pub mod packages;
+pub mod uptime;
+pub mod terminal;
