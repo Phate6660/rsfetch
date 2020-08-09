@@ -81,7 +81,7 @@ Crates explicitely used, and why:
 
 ## Features
 
-Currently there are 2 features. One or the other must be chosen for each section.<br>
+Currently there are 4 features. One or the other must be chosen for each section.<br>
 
 Music:
 
