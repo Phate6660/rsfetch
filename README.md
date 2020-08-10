@@ -132,6 +132,7 @@ OPTIONS:
 
 ## TODO
 
-- Better output (implemented, might expand in future)
+- better output (implemented, might expand in future)
 - memory info (partially implemented, shows total in MBs)
 - implement async
+- the actual information gathering functions are going to be taken out and placed inside their own lib called `nixinfo`, rsfetch will become basically a frontend to the lib
