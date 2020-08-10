@@ -33,21 +33,21 @@ pub fn output_user(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_editor(matches: &ArgMatches) {
     if matches.is_present("editor") {
         println!("Editor:       {}", env("EDITOR".to_string()));
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_shell(matches: &ArgMatches) {
     if matches.is_present("shell") {
         println!("Shell:        {}", env("SHELL".to_string()));
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_user(matches: &ArgMatches) {
     if matches.is_present("user") {
         println!("User:         {}", env("USER".to_string()));

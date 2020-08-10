@@ -10,7 +10,7 @@ pub fn output_device(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_device(matches: &ArgMatches) {
     if matches.is_present("device") {
         println!("Device:       {}", device().trim());

@@ -10,7 +10,7 @@ pub fn output_distro(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_distro(matches: &ArgMatches) {
     if matches.is_present("distro") {
         println!("Distro:       {}", distro().trim().replace("\"", ""));

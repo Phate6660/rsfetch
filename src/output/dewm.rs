@@ -10,7 +10,7 @@ pub fn output_dewm(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_dewm(matches: &ArgMatches) {
     if matches.is_present("environment") {
         println!("Environment:  {}", environment().trim());

@@ -10,7 +10,7 @@ pub fn output_hostname(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_hostname(matches: &ArgMatches) {
     if matches.is_present("hostname") {
         println!("Hostname:     {}", hostname().trim());

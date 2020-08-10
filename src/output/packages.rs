@@ -11,7 +11,7 @@ pub fn output_packages(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_packages(matches: &ArgMatches) {
     if matches.is_present("packages") {
         let manager = matches.value_of("packages").unwrap();

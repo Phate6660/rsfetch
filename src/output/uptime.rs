@@ -10,7 +10,7 @@ pub fn output_uptime(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_uptime(matches: &ArgMatches) {
     if matches.is_present("uptime") {
         println!("Uptime:       {}", uptime());

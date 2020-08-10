@@ -10,7 +10,7 @@ pub fn output_memory(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_memory(matches: &ArgMatches) {
     if matches.is_present("memory") {
         println!("Memory:       {}", memory().trim());

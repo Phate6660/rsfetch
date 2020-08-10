@@ -10,7 +10,7 @@ pub fn output_terminal(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_terminal(matches: &ArgMatches) {
     if matches.is_present("terminal") {
         println!("Terminal:     {}", terminal().trim());

@@ -90,18 +90,12 @@ Tokei stats (cropped to save space): `tokei -t=rust .`
 
 ## Features
 
-Currently there are 4 features. One or the other must be chosen for each section.<br>
+Currently there are 2 features. They are completely optional.<br>
 
-Music:
-
-- `nomusic`, this will cause nixinfo to not pull in the `mpd` crate, and will cause the music function to output `N/A`.
 - `music`, this will cause nixinfo to pull in the `mpd` crate, and display the music info as: 
 
 `artist - album (date) - title`
 
-Output:
-
-- `plain_output`, see example above for how it looks.
 - `pretty_output`, this will cause rsfetch to pull in the `prettytable-rs` crate, see example above for how it looks.
 
 ## Help

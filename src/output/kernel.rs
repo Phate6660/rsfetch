@@ -10,7 +10,7 @@ pub fn output_kernel(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_kernel(matches: &ArgMatches) {
     if matches.is_present("kernel") {
         println!("Kernel:       {}", kernel().trim());

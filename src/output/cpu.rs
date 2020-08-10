@@ -28,7 +28,7 @@ pub fn output_cpu(matches: &ArgMatches) {
     }
 }
 
-#[cfg(feature = "plain_output")]
+#[cfg(not(feature = "pretty_output"))]
 pub fn output_cpu(matches: &ArgMatches) {
     if matches.is_present("cpu") {
         if matches.is_present("temperature") {
