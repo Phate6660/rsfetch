@@ -4,10 +4,10 @@ use nixinfo::{cpu, temp};
 fn the_temp(matches: &ArgMatches) -> String {
     let unit = matches.value_of("temperature").unwrap();
     if unit == "C" {
-        return temp().to_string() + "*C";
+        temp() + "*C"
     } else if unit == "F" {
         let pre = temp().parse::<i64>().unwrap() * 9 / 5 + 32;
-        return pre.to_string() + "*F";
+        pre.to_string() + "*F"
     } else {
         format!("N/A ({} is not a supported unit)", unit)
     }
