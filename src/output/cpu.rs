@@ -32,7 +32,7 @@ pub fn output_cpu(matches: &ArgMatches) {
 pub fn output_cpu(matches: &ArgMatches) {
     if matches.is_present("cpu") {
         if matches.is_present("temperature") {
-            println!("CPU:          {} {}", cpu().trim(), the_temp(matches));
+            println!("CPU:          {} [{}]", cpu().trim(), the_temp(matches));
         } else {
             println!("CPU:          {}", cpu().trim());
         }
