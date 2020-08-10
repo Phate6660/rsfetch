@@ -137,6 +137,5 @@ OPTIONS:
 ## TODO
 
 - better output (implemented, might expand in future)
-- memory info (partially implemented, shows total in MBs)
 - implement async
 - information gathering functions are split off into a separate lib ([implemented](https://github.com/Phate6660/nixinfo))
