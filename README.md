@@ -75,8 +75,8 @@ Crates explicitely used, and why:
 
 - `clap`: CLI framework
 - `mpd`: completely optional, used for the feature `music`
-- `prettytable-rs`: completely optional, used for the feature `pretty_output`
 - `nixinfo`: contains all of the information gathering functions
+- `prettytable-rs`: completely optional, used for the feature `pretty_output`
 
 Tokei stats (cropped to save space): `tokei -t=rust .`
 
