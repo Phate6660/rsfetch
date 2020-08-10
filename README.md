@@ -21,7 +21,7 @@ Table of Contents:
 
 ## Example Output
 
-`$ cargo run --features=music,plain_output -- -cDdEehkmMstuUp portage`
+`$ cargo run --features=music -- -cDdEehkmMstuUp portage`
 
 ```
 CPU:          Intel Core i5-3470 CPU @ 3.20GHz
