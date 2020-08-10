@@ -1,4 +1,4 @@
-use crate::info::kernel::kernel;
+use nixinfo::kernel;
 use clap::ArgMatches;
 
 #[cfg(feature = "pretty_output")]

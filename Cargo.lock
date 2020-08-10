@@ -224,6 +224,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "nixinfo"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8d59550efd88a567228100e5fa7b0c8ec5e2b848f2964f51635d7dfb313a49f9"
+dependencies = [
+ "glob",
+ "mpd",
+]
+
+[[package]]
 name = "prettytable-rs"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -268,8 +278,7 @@ name = "rsfetch"
 version = "0.1.0"
 dependencies = [
  "clap",
- "glob",
- "mpd",
+ "nixinfo",
  "prettytable-rs",
 ]
 

@@ -1,4 +1,4 @@
-use crate::info::music::music;
+use nixinfo::music;
 use clap::ArgMatches;
 
 #[cfg(feature = "pretty_output")]

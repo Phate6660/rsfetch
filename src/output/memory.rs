@@ -1,4 +1,4 @@
-use crate::info::memory::memory;
+use nixinfo::memory;
 use clap::ArgMatches;
 
 #[cfg(feature = "pretty_output")]

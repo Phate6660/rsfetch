@@ -1,4 +1,4 @@
-use crate::info::uptime::uptime;
+use nixinfo::uptime;
 use clap::ArgMatches;
 
 #[cfg(feature = "pretty_output")]

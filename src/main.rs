@@ -4,7 +4,6 @@
 use clap::Arg;
 
 mod output;
-mod info;
 mod shared_functions;
 
 fn main() {

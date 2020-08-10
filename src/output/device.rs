@@ -1,4 +1,4 @@
-use crate::info::device::device;
+use nixinfo::device;
 use clap::ArgMatches;
 
 #[cfg(feature = "pretty_output")]

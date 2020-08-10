@@ -1,4 +1,4 @@
-use crate::info::terminal::terminal;
+use nixinfo::terminal;
 use clap::ArgMatches;
 
 #[cfg(feature = "pretty_output")]

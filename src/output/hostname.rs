@@ -1,4 +1,4 @@
-use crate::info::hostname::hostname;
+use nixinfo::hostname;
 use clap::ArgMatches;
 
 #[cfg(feature = "pretty_output")]
