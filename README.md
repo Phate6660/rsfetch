@@ -74,9 +74,19 @@ Crate deps and binary size depending on features for rsfetch:
 Crates explicitely used, and why:
 
 - `clap`: CLI framework
-- `glob`: parsing package list for portage
 - `mpd`: completely optional, used for the feature `music`
 - `prettytable-rs`: completely optional, used for the feature `pretty_output`
+- `nixinfo`: contains all of the information gathering functions
+
+Tokei stats (cropped to save space): `tokei -t=rust .`
+
+```
+====================================================================================================
+ Language                                 Files        Lines         Code     Comments       Blanks
+====================================================================================================
+ Rust                                        16          390          357            0           33
+----------------------------------------------------------------------------------------------------
+```
 
 ## Features
 
@@ -84,15 +94,15 @@ Currently there are 4 features. One or the other must be chosen for each section
 
 Music:
 
-- `nomusic`, this will cause rsfetch to not pull in the `mpd` crate, and will cause the music function to output `N/A`.
-- `music`, this will cause rsfetch to pull in the `mpd` crate, and display the music info as: 
+- `nomusic`, this will cause nixinfo to not pull in the `mpd` crate, and will cause the music function to output `N/A`.
+- `music`, this will cause nixinfo to pull in the `mpd` crate, and display the music info as: 
 
 `artist - album (date) - title`
 
 Output:
 
 - `plain_output`, see example above for how it looks.
-- `pretty_output`, this will pull in the `prettytable-rs` crate, see example above for how it looks.
+- `pretty_output`, this will cause rsfetch to pull in the `prettytable-rs` crate, see example above for how it looks.
 
 ## Help
 
