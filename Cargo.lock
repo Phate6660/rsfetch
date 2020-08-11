@@ -225,9 +225,9 @@ dependencies = [
 
 [[package]]
 name = "nixinfo"
-version = "0.1.2"
+version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "349cc5c3dc5541b3156ef1ada04e91dc71143ebf074546f5c079288f9a9bfda9"
+checksum = "dca67f6fe5c99cc73c1014ecc95557c5811db4787e01a7895cbda51ac16be655"
 dependencies = [
  "glob",
  "mpd",
