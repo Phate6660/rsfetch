@@ -67,10 +67,10 @@ Music:        Machine Head - Burn My Eyes (1994) - Death Church
 
 Crate deps and binary size depending on features for rsfetch:
 
-- `music,plain_output`: 19 crates, 3.7 MB
-- `music,pretty_output`: 41 crates, 3.9 MB
-- `nomusic,plain_output`: 15 crates, 3.6 MB
-- `nomusic,pretty_output`: 37 crates, 3.9 MB
+- `music,plain_output`: 20 crates, 3.7 MB
+- `music,pretty_output`: 42 crates, 3.9 MB
+- `nomusic,plain_output`: 16 crates, 3.6 MB
+- `nomusic,pretty_output`: 38 crates, 3.9 MB
 
 Crates explicitely used, and why:
 
@@ -82,11 +82,11 @@ Crates explicitely used, and why:
 Tokei stats (cropped to save space): `tokei -t=rust .`
 
 ```
-====================================================================================================
- Language                                 Files        Lines         Code     Comments       Blanks
-====================================================================================================
- Rust                                        16          390          357            0           33
-----------------------------------------------------------------------------------------------------
+===============================================================================
+ Language            Files        Lines         Code     Comments       Blanks
+===============================================================================
+ Rust                   17          413          378            0           35
+===============================================================================
 ```
 
 ## Features
