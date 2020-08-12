@@ -3,6 +3,7 @@ pub mod device;
 pub mod dewm;
 pub mod distro;
 pub mod env;
+pub mod gpu;
 pub mod hostname;
 pub mod kernel;
 pub mod main;

@@ -4,6 +4,7 @@ pub fn main(matches: clap::ArgMatches) {
     crate::output::dewm::output_dewm(&matches);
     crate::output::distro::output_distro(&matches);
     crate::output::env::output_editor(&matches);
+    crate::output::gpu::output_gpu(&matches);
     crate::output::hostname::output_hostname(&matches);
     crate::output::kernel::output_kernel(&matches);
     crate::output::memory::output_memory(&matches);
