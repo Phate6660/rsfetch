@@ -21,7 +21,7 @@ Table of Contents:
 
 ## Example Output
 
-`$ cargo run --features=music -- -cDdEehkmMstuUp portage`
+`$ cargo run --features=music -- -cDdEeghkmMstuUp portage`
 
 ```
 CPU:          Intel Core i5-3470 CPU @ 3.20GHz
@@ -29,18 +29,19 @@ Device:       OptiPlex 7010
 Environment:  bspwm
 Distro:       Gentoo
 Editor:       /usr/bin/emacsclient
+GPU:          Advanced Micro Devices, Inc. [AMD/ATI] Cedar [Radeon HD 5000/6000/7350/8350 Series]
 Hostname:     gentoo
 Kernel:       5.4.48-ck-valley
 Memory:       15971 MB
-Packages:     87 (explicit), 575 (total)
+Packages:     87 (explicit), 574 (total)
 Shell:        /bin/bash
 Terminal:     xterm
-Uptime:       1d 19h 24m
+Uptime:       35m
 User:         valley
-Music:        Machine Head - Supercharger (2001) - Bulldozer
+Music:        Machine Head - Burn My Eyes (1994) - Death Church
 ```
 
-`$ cargo run --features=music,pretty_output -- -cDdEehkmMstuUp portage`
+`$ cargo run --features=music,pretty_output -- -cDdEeghkmMstuUp portage`
 
 ```
 +──────────────+───────────────────────────────────────────+
@@ -49,17 +50,17 @@ Music:        Machine Head - Supercharger (2001) - Bulldozer
   Environment  │ bspwm
   Distro       │ Gentoo
   Editor       │ /usr/bin/emacsclient
+  GPU          │ Advanced Micro Devices, Inc. [AMD/ATI] Cedar [Radeon HD 5000/6000/7350/8350 Series]
   Hostname     │ gentoo
   Kernel       │ 5.4.48-ck-valley
   Memory       │ 15971 MB
-  Packages     │ 87 (explicit), 575 (total)
+  Packages     │ 87 (explicit), 574 (total)
   Shell        │ /bin/bash
   Terminal     │ xterm
-  Uptime       │ 1d 19h 24m
+  Uptime       │ 37m
   User         │ valley
-│ Music        │ Machine Head - Supercharger (2001) - Bulldozer        │
-+──────────────+───────────────────────────────────────────────────────+
-
+│ Music        │ Machine Head - Burn My Eyes (1994) - Death Church        │
++──────────────+──────────────────────────────────────────────────────────+
 ```
 
 ## Extra info
