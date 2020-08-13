@@ -29,7 +29,7 @@ Device:       OptiPlex 7010
 Environment:  bspwm
 Distro:       Gentoo
 Editor:       /usr/bin/emacsclient
-GPU:          Advanced Micro Devices, Inc. [AMD/ATI] Cedar [Radeon HD 5000/6000/7350/8350 Series]
+GPU:          AMD/ATI Cedar Radeon HD 5000/6000/7350/8350 Series
 Hostname:     gentoo
 Kernel:       5.4.48-ck-valley
 Memory:       15971 MB
@@ -50,7 +50,7 @@ Music:        Machine Head - Burn My Eyes (1994) - Death Church
   Environment  │ bspwm
   Distro       │ Gentoo
   Editor       │ /usr/bin/emacsclient
-  GPU          │ Advanced Micro Devices, Inc. [AMD/ATI] Cedar [Radeon HD 5000/6000/7350/8350 Series]
+  GPU          │ AMD/ATI Cedar Radeon HD 5000/6000/7350/8350 Series
   Hostname     │ gentoo
   Kernel       │ 5.4.48-ck-valley
   Memory       │ 15971 MB
