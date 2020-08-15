@@ -10,7 +10,7 @@ use prettytable::format::LinePosition::Intern;
 pub fn output_editor(matches: &ArgMatches) {
     if matches.is_present("editor") {
         let mut table = table(' ', Intern, 7);
-        table.add_row(row!["Editor", &env("EDITOR".to_string())]);
+        table.add_row(row!["Editor", &env("EDITOR")]);
         table.printstd();
     }
 }
@@ -19,7 +19,7 @@ pub fn output_editor(matches: &ArgMatches) {
 pub fn output_shell(matches: &ArgMatches) {
     if matches.is_present("shell") {
         let mut table = table(' ', Intern, 8);
-        table.add_row(row!["Shell", &env("SHELL".to_string())]);
+        table.add_row(row!["Shell", &env("SHELL")]);
         table.printstd();
     }
 }
@@ -28,7 +28,7 @@ pub fn output_shell(matches: &ArgMatches) {
 pub fn output_user(matches: &ArgMatches) {
     if matches.is_present("user") {
         let mut table = table(' ', Intern, 9);
-        table.add_row(row!["User", &env("USER".to_string())]);
+        table.add_row(row!["User", &env("USER")]);
         table.printstd();
     }
 }
@@ -36,20 +36,20 @@ pub fn output_user(matches: &ArgMatches) {
 #[cfg(not(feature = "pretty_output"))]
 pub fn output_editor(matches: &ArgMatches) {
     if matches.is_present("editor") {
-        println!("Editor:       {}", env("EDITOR".to_string()));
+        println!("Editor:       {}", env("EDITOR"));
     }
 }
 
 #[cfg(not(feature = "pretty_output"))]
 pub fn output_shell(matches: &ArgMatches) {
     if matches.is_present("shell") {
-        println!("Shell:        {}", env("SHELL".to_string()));
+        println!("Shell:        {}", env("SHELL"));
     }
 }
 
 #[cfg(not(feature = "pretty_output"))]
 pub fn output_user(matches: &ArgMatches) {
     if matches.is_present("user") {
-        println!("User:         {}", env("USER".to_string()));
+        println!("User:         {}", env("USER"));
     }
 }
