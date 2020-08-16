@@ -2,15 +2,19 @@
 #[macro_use] extern crate prettytable;
 
 use clap::Arg;
-
 mod output;
-mod shared_functions;
 
 fn main() {
     let matches = clap::App::new("rsfetch")
         .version("0.1.0")
         .author("Phate6660 <https://pages.codeberg.org/Phate6660>")
         .about("\nAn info fetch tool written in Rust. Everything is off by default, enable what you want.")
+        .arg(Arg::with_name("corner")
+             .short("C")
+             .long("corner")
+             .value_name("char")
+             .help("Set the corner character.")
+             .takes_value(true))
         .arg(Arg::with_name("cpu")
              .short("c")
              .help("Display the model of the CPU."))
@@ -66,5 +70,5 @@ fn main() {
              .short("U")
              .help("Display the name of the user."))
         .get_matches();
-    output::main::main(matches);
+    output::main(matches);
 }

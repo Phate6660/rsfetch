@@ -6,9 +6,7 @@ It's made development for rsfetch downright unpleasant at times.
 
 ----
 
-A blazing fast (<5 ms) information fetching utility.<br>
-As of writing this, plain output takes a total of 1.9 ms to display all available fields.<br>
-While pretty output takes a total of 2.8 ms to display all fields.<br>
+A blazing fast (<20 ms) information fetching utility.<br>
 According to [`hyperfine`](https://github.com/sharkdp/hyperfine) anyways.
 
 Table of Contents:
@@ -26,41 +24,41 @@ Table of Contents:
 ```
 CPU:          Intel Core i5-3470 CPU @ 3.20GHz
 Device:       OptiPlex 7010
-Environment:  bspwm
 Distro:       Gentoo
 Editor:       /usr/bin/emacsclient
+Environment:  bspwm
 GPU:          AMD/ATI Cedar Radeon HD 5000/6000/7350/8350 Series
 Hostname:     gentoo
 Kernel:       5.4.48-ck-valley
 Memory:       15971 MB
-Packages:     87 (explicit), 574 (total)
+Packages:     87 (explicit), 570 (total)
 Shell:        /bin/bash
 Terminal:     xterm
-Uptime:       35m
+Uptime:       2d 9h 54m
 User:         valley
-Music:        Machine Head - Burn My Eyes (1994) - Death Church
+Music:        System Of A Down - System Of A Down (1998) - Know
 ```
 
-`$ cargo run --features=music,pretty_output -- -cDdEeghkmMstuUp portage`
+`$ cargo run --features=music,pretty_output -- -cDdEeghkmMstuUp portage -C 0`
 
 ```
-+──────────────+───────────────────────────────────────────+
-│ CPU          │ Intel Core i5-3470 CPU @ 3.20GHz          │
-  Device       │ OptiPlex 7010
-  Environment  │ bspwm
-  Distro       │ Gentoo
-  Editor       │ /usr/bin/emacsclient
-  GPU          │ AMD/ATI Cedar Radeon HD 5000/6000/7350/8350 Series
-  Hostname     │ gentoo
-  Kernel       │ 5.4.48-ck-valley
-  Memory       │ 15971 MB
-  Packages     │ 87 (explicit), 574 (total)
-  Shell        │ /bin/bash
-  Terminal     │ xterm
-  Uptime       │ 37m
-  User         │ valley
-│ Music        │ Machine Head - Burn My Eyes (1994) - Death Church        │
-+──────────────+──────────────────────────────────────────────────────────+
+0──────────────────────────────────────────────────────────────────────0
+│ CPU         │ Intel Core i5-3470 CPU @ 3.20GHz                      │
+│ Distro      │ Gentoo                                                 │
+│ Device      │ OptiPlex 7010                                          │
+│ Editor      │ /usr/bin/emacsclient                                   │
+│ Environment │ bspwm                                                  │
+│ GPU         │ AMD/ATI Cedar Radeon HD 5000/6000/7350/8350 Series     │
+│ Hostname    │ gentoo                                                 │
+│ Kernel      │ 5.4.48-ck-valley                                       │
+│ Memory      │ 15971 MB                                               │
+│ Packages    │ 87 (explicit), 570 (total)                             │
+│ Shell       │ /bin/bash                                              │
+│ Terminal    │ xterm                                                  │
+│ Uptime      │ 2d 9h 54m                                              │
+│ User        │ valley                                                 │
+│ Music       │ System Of A Down - System Of A Down (1998) - Suite-Pee │
+0──────────────────────────────────────────────────────────────────────0
 ```
 
 ## Extra info
@@ -131,12 +129,13 @@ FLAGS:
     -V, --version    Prints version information
 
 OPTIONS:
+    -C, --corner <char>         Set the corner character.
     -p, --packages <manager>    Display package count.
     -T, --temperature <C/F>     Display CPU temp for Raspberry Pi, must have CPU field enabled.
 ```
 
 ## TODO
 
-- better output (implemented, might expand in future)
+- better output (implemented)
 - implement async
 - information gathering functions are split off into a separate lib ([implemented](https://github.com/Phate6660/nixinfo))
