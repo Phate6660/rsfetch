@@ -43,7 +43,7 @@ Music:        System Of A Down - System Of A Down (1998) - Know
 
 ```
 0──────────────────────────────────────────────────────────────────────0
-│ CPU         │ Intel Core i5-3470 CPU @ 3.20GHz                      │
+│ CPU         │ Intel Core i5-3470 CPU @ 3.20GHz                       │
 │ Distro      │ Gentoo                                                 │
 │ Device      │ OptiPlex 7010                                          │
 │ Editor      │ /usr/bin/emacsclient                                   │
