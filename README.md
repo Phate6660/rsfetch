@@ -74,7 +74,7 @@ Crates explicitely used, and why:
 
 - `clap`: CLI framework
 - `mpd`: completely optional, used for the feature `music`
-- `nixinfo`: contains all of the information gathering functions
+- [`nixinfo`](https://github.com/Phate6660/nixinfo): contains all of the information gathering functions
 - `prettytable-rs`: completely optional, used for the feature `pretty_output`
 
 Tokei stats (cropped to save space): `tokei -t=rust .`
@@ -136,6 +136,6 @@ OPTIONS:
 
 ## TODO
 
-- better output (implemented)
+- better pretty output by either handling it myself (scary!) or replacing `prettytable-rs` with a lighter crate
 - implement async
-- information gathering functions are split off into a separate lib ([implemented](https://github.com/Phate6660/nixinfo))
+- information gathering functions are split off into a separate lib (implemented -- `nixinfo`)
