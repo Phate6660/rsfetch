@@ -7,9 +7,9 @@ use nixinfo::{
 fn the_temp(matches: &ArgMatches) -> String {
     let unit = matches.value_of("temperature").unwrap();
     if unit == "C" {
-        nixinfo::temp() + "*C"
+        nixinfo::temp().unwrap() + "*C"
     } else if unit == "F" {
-        let pre = nixinfo::temp().parse::<i64>().unwrap() * 9 / 5 + 32;
+        let pre = nixinfo::temp().unwrap().parse::<i64>().unwrap() * 9 / 5 + 32;
         pre.to_string() + "*F"
     } else {
         format!("N/A ({} is not a supported unit)", unit)
@@ -41,10 +41,10 @@ pub fn main(matches: ArgMatches) {
     if matches.is_present("cpu") {
         if matches.is_present("temperature") {
             let temp = the_temp(&matches);
-            let row = format!("{} [{}]", nixinfo::cpu().trim(), temp);
+            let row = format!("{} [{}]", cpu().unwrap_or("N/A (could not read /proc/cpuinfo)".to_string()).trim(), temp);
             table.add_row(row!["CPU", &row]);
         } else {
-            table.add_row(row!["CPU", &cpu()]);
+            table.add_row(row!["CPU", &cpu().unwrap_or("N/A (could not read /proc/cpuinfo)".to_string())]);
         }
     }
     if matches.is_present("distro") {
@@ -63,13 +63,13 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["GPU", &gpu()]);
     }
     if matches.is_present("hostname") {
-        table.add_row(row!["Hostname", &hostname()]);
+        table.add_row(row!["Hostname", &hostname().unwrap_or("N/A (could not read /etc/hostname)".to_string())]);
     }
     if matches.is_present("kernel") {
-        table.add_row(row!["Kernel", &kernel()]);
+        table.add_row(row!["Kernel", &kernel().unwrap_or("N/A (could not read /proc/sys/kernel/osrelease)".to_string())]);
     }
     if matches.is_present("memory") {
-        table.add_row(row!["Memory", &memory()]);
+        table.add_row(row!["Memory", &memory().unwrap_or("N/A (could not read /proc/meminfo)".to_string())]);
     }
     if matches.is_present("packages") {
         table.add_row(row![
@@ -84,7 +84,7 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["Terminal", &terminal()]);
     }
     if matches.is_present("uptime") {
-        table.add_row(row!["Uptime", &uptime()]);
+        table.add_row(row!["Uptime", &uptime().unwrap_or("N/A (could not read /proc/uptime)".to_string())]);
     }
     if matches.is_present("user") {
         table.add_row(row!["User", &env("USER")]);
@@ -99,9 +99,9 @@ pub fn main(matches: ArgMatches) {
 pub fn main(matches: ArgMatches) {
     if matches.is_present("cpu") {
         if matches.is_present("temperature") {
-            println!("CPU:          {} [{}]", cpu(), the_temp(&matches));
+            println!("CPU:          {} [{}]", cpu().unwrap_or("N/A (could not read /proc/cpuinfo)".to_string()), the_temp(&matches));
         } else {
-            println!("CPU:          {}", cpu());
+            println!("CPU:          {}", cpu().unwrap_or("N/A (could not read /proc/cpuinfo)".to_string()));
         }
     }
     if matches.is_present("device") {
@@ -120,13 +120,13 @@ pub fn main(matches: ArgMatches) {
         println!("GPU:          {}", gpu());
     }
     if matches.is_present("hostname") {
-        println!("Hostname:     {}", hostname());
+        println!("Hostname:     {}", hostname().unwrap_or("N/A (could not read /etc/hostname)".to_string()));
     }
     if matches.is_present("kernel") {
-        println!("Kernel:       {}", kernel());
+        println!("Kernel:       {}", kernel().unwrap_or("N/A (could not read /proc/sys/kernel/osrelease)".to_string()));
     }
     if matches.is_present("memory") {
-        println!("Memory:       {}", memory());
+        println!("Memory:       {}", memory().unwrap_or("N/A (could not read /proc/meminfo)".to_string()));
     }
     if matches.is_present("packages") {
         let manager = matches.value_of("packages").unwrap();
@@ -139,7 +139,7 @@ pub fn main(matches: ArgMatches) {
         println!("Terminal:     {}", terminal());
     }
     if matches.is_present("uptime") {
-        println!("Uptime:       {}", uptime());
+        println!("Uptime:       {}", uptime().unwrap_or("N/A (could not read /proc/uptime)".to_string()));
     }
     if matches.is_present("user") {
         println!("User:         {}", env("USER"));
