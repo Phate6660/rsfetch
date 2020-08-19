@@ -81,7 +81,7 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["Shell", &env("SHELL")]);
     }
     if matches.is_present("terminal") {
-        table.add_row(row!["Terminal", &terminal()]);
+        table.add_row(row!["Terminal", &terminal().unwrap_or("N/A (could not read the appropriate /proc/?/status)".to_string())]);
     }
     if matches.is_present("uptime") {
         table.add_row(row!["Uptime", &uptime().unwrap_or("N/A (could not read /proc/uptime)".to_string())]);
@@ -136,7 +136,7 @@ pub fn main(matches: ArgMatches) {
         println!("Shell:        {}", env("SHELL"));
     }
     if matches.is_present("terminal") {
-        println!("Terminal:     {}", terminal());
+        println!("Terminal:     {}", terminal().unwrap_or("N/A (could not read the appropriate /proc/?/status)".to_string()));
     }
     if matches.is_present("uptime") {
         println!("Uptime:       {}", uptime().unwrap_or("N/A (could not read /proc/uptime)".to_string()));
