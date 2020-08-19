@@ -41,10 +41,10 @@ pub fn main(matches: ArgMatches) {
     if matches.is_present("cpu") {
         if matches.is_present("temperature") {
             let temp = the_temp(&matches);
-            let row = format!("{} [{}]", cpu().unwrap_or("N/A (could not read /proc/cpuinfo)".to_string()).trim(), temp);
+            let row = format!("{} [{}]", cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string()).trim(), temp);
             table.add_row(row!["CPU", &row]);
         } else {
-            table.add_row(row!["CPU", &cpu().unwrap_or("N/A (could not read /proc/cpuinfo)".to_string())]);
+            table.add_row(row!["CPU", &cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string())]);
         }
     }
     if matches.is_present("distro") {
@@ -63,13 +63,13 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["GPU", &gpu()]);
     }
     if matches.is_present("hostname") {
-        table.add_row(row!["Hostname", &hostname().unwrap_or("N/A (could not read /etc/hostname)".to_string())]);
+        table.add_row(row!["Hostname", &hostname().unwrap_or_else(|_| "N/A (could not read /etc/hostname)".to_string())]);
     }
     if matches.is_present("kernel") {
-        table.add_row(row!["Kernel", &kernel().unwrap_or("N/A (could not read /proc/sys/kernel/osrelease)".to_string())]);
+        table.add_row(row!["Kernel", &kernel().unwrap_or_else(|_| "N/A (could not read /proc/sys/kernel/osrelease)".to_string())]);
     }
     if matches.is_present("memory") {
-        table.add_row(row!["Memory", &memory().unwrap_or("N/A (could not read /proc/meminfo)".to_string())]);
+        table.add_row(row!["Memory", &memory().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())]);
     }
     if matches.is_present("packages") {
         table.add_row(row![
@@ -81,10 +81,10 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["Shell", &env("SHELL")]);
     }
     if matches.is_present("terminal") {
-        table.add_row(row!["Terminal", &terminal().unwrap_or("N/A (could not read the appropriate /proc/?/status)".to_string())]);
+        table.add_row(row!["Terminal", &terminal().unwrap_or_else(|_| "N/A (could not read the appropriate /proc/?/status)".to_string())]);
     }
     if matches.is_present("uptime") {
-        table.add_row(row!["Uptime", &uptime().unwrap_or("N/A (could not read /proc/uptime)".to_string())]);
+        table.add_row(row!["Uptime", &uptime().unwrap_or_else(|_| "N/A (could not read /proc/uptime)".to_string())]);
     }
     if matches.is_present("user") {
         table.add_row(row!["User", &env("USER")]);
