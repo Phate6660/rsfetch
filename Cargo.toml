@@ -13,4 +13,4 @@ music = ["nixinfo/music"]
 [dependencies]
 clap = "2.33.1"
 prettytable-rs = { version = "^0.8", optional = true }
-nixinfo = "0.2.6"
+nixinfo = "0.2.7"
