@@ -60,7 +60,7 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["Environment", &environment()]);
     }
     if matches.is_present("gpu") {
-        table.add_row(row!["GPU", &gpu()]);
+        table.add_row(row!["GPU", &gpu().unwrap()]);
     }
     if matches.is_present("hostname") {
         table.add_row(row!["Hostname", &hostname().unwrap_or_else(|_| "N/A (could not read /etc/hostname)".to_string())]);
@@ -72,9 +72,10 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["Memory", &memory().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())]);
     }
     if matches.is_present("packages") {
+        let manager = matches.value_of("packages").unwrap();
         table.add_row(row![
             "Packages",
-            &packages(matches.value_of("packages").unwrap())
+            &packages(manager).unwrap_or_else(|_| format!("N/A (could not run {})", manager))
         ]);
     }
     if matches.is_present("shell") {
@@ -117,7 +118,7 @@ pub fn main(matches: ArgMatches) {
         println!("Environment:  {}", environment());
     }
     if matches.is_present("gpu") {
-        println!("GPU:          {}", gpu());
+        println!("GPU:          {}", gpu().unwrap());
     }
     if matches.is_present("hostname") {
         println!("Hostname:     {}", hostname().unwrap_or("N/A (could not read /etc/hostname)".to_string()));
@@ -130,7 +131,7 @@ pub fn main(matches: ArgMatches) {
     }
     if matches.is_present("packages") {
         let manager = matches.value_of("packages").unwrap();
-        println!("Packages:     {}", packages(manager));
+        println!("Packages:     {}", packages(manager).unwrap_or(format!("N/A (could not run {})", manager)));
     }
     if matches.is_present("shell") {
         println!("Shell:        {}", env("SHELL"));
