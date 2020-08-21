@@ -47,11 +47,11 @@ pub fn main(matches: ArgMatches) {
             table.add_row(row!["CPU", &cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string())]);
         }
     }
-    if matches.is_present("distro") {
-        table.add_row(row!["Distro", &distro()]);
-    }
     if matches.is_present("device") {
-        table.add_row(row!["Device", &device()]);
+        table.add_row(row!["Device", &device().unwrap_or_else(|_| "N/A (could not read /sys/devices/virtual/dmi/id/product_name nor /sys/firmware/devicetree/base/model)".to_string())]);
+    }
+    if matches.is_present("distro") {
+        table.add_row(row!["Distro", &distro().unwrap_or_else(|_| "N/A (could not read /bedrock/etc/os-release, /etc/os-release, nor /usr/lib/os-release)".to_string())]);
     }
     if matches.is_present("editor") {
         table.add_row(row!["Editor", &env("EDITOR")]);
@@ -106,10 +106,10 @@ pub fn main(matches: ArgMatches) {
         }
     }
     if matches.is_present("device") {
-        println!("Device:       {}", device());
+        println!("Device:       {}", device().unwrap_or("N/A (could not read /sys/devices/virtual/dmi/id/product_name nor /sys/firmware/devicetree/base/model)".to_string()));
     }
     if matches.is_present("distro") {
-        println!("Distro:       {}", distro());
+        println!("Distro:       {}", distro().unwrap_or("N/A (could not read /bedrock/etc/os-release, /etc/os-release, nor /usr/lib/os-release)".to_string()));
     }
     if matches.is_present("editor") {
         println!("Editor:       {}", env("EDITOR"));
