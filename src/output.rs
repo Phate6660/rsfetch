@@ -150,6 +150,10 @@ pub fn main(matches: ArgMatches) {
         println!("User:         {}", env("USER").unwrap());
     }
     if matches.is_present("music") {
+        #[cfg(feature = "music")]
+        println!("Music:        {}", &music().unwrap_or_else(|_| "N/A (mpd is currently stopped or not running)".to_string()));
+
+        #[cfg(not(feature = "music"))]
         println!("Music:        {}", music());
     }
 }
