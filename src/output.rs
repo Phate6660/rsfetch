@@ -91,7 +91,11 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["User", &env("USER").unwrap()]);
     }
     if matches.is_present("music") {
+        #[cfg(feature = "music")]
         table.add_row(row!["Music", &music().unwrap_or_else(|_| "N/A (mpd is currently stopped or not running)".to_string())]);
+
+        #[cfg(not(feature = "music"))]
+        table.add_row(row!["Music", &music()]);
     }
     table.printstd();
 }
