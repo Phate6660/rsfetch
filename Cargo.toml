@@ -13,7 +13,7 @@ music = ["nixinfo/music"]
 [dependencies]
 clap = "2.33.3"
 prettytable-rs = { version = "0.8.0", optional = true }
-nixinfo = "0.3.2"
+nixinfo = "0.3.3"
 
 [profile.release]
 codegen-units = 1
