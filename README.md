@@ -65,10 +65,10 @@ Music:        System Of A Down - System Of A Down (1998) - Know
 
 Crate deps and binary size depending on features for rsfetch:
 
-- `music,plain_output`: 20 crates, 3.7 MB
-- `music,pretty_output`: 42 crates, 3.9 MB
-- `nomusic,plain_output`: 16 crates, 3.6 MB
-- `nomusic,pretty_output`: 38 crates, 3.9 MB
+- No Features: 16 crates, 2.5 MB (not stripped), 868 KB (stripped)
+- `music`: 20 crates, 2.6 MB (not stripped), 940 KB (stripped)
+- `pretty_output`: 36 crates, 2.6 MB (not stripped), 1.0 MB (stripped)
+- `music,pretty_output`: 40 crates, 2.7 MB (not stripped), 1.1 MB (stripped)
 
 Crates explicitely used, and why:
 
