@@ -8,7 +8,8 @@ edition = "2018"
 
 [features]
 pretty_output = ["prettytable-rs"]
-music = ["nixinfo/music"]
+music_mpd = ["nixinfo/music_mpd"]
+music_playerctl = ["nixinfo/music_playerctl"]
 
 [dependencies]
 clap = "2.33.3"

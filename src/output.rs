@@ -41,10 +41,19 @@ pub fn main(matches: ArgMatches) {
     if matches.is_present("cpu") {
         if matches.is_present("temperature") {
             let temp = the_temp(&matches);
-            let row = format!("{} [{}]", cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string()).trim(), temp);
+            let row = format!(
+                "{} [{}]",
+                cpu()
+                    .unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string())
+                    .trim(),
+                temp
+            );
             table.add_row(row!["CPU", &row]);
         } else {
-            table.add_row(row!["CPU", &cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string())]);
+            table.add_row(row![
+                "CPU",
+                &cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string())
+            ]);
         }
     }
     if matches.is_present("device") {
@@ -63,13 +72,23 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["GPU", &gpu().unwrap()]);
     }
     if matches.is_present("hostname") {
-        table.add_row(row!["Hostname", &hostname().unwrap_or_else(|_| "N/A (could not read /etc/hostname)".to_string())]);
+        table.add_row(row![
+            "Hostname",
+            &hostname().unwrap_or_else(|_| "N/A (could not read /etc/hostname)".to_string())
+        ]);
     }
     if matches.is_present("kernel") {
-        table.add_row(row!["Kernel", &kernel().unwrap_or_else(|_| "N/A (could not read /proc/sys/kernel/osrelease)".to_string())]);
+        table.add_row(row![
+            "Kernel",
+            &kernel()
+                .unwrap_or_else(|_| "N/A (could not read /proc/sys/kernel/osrelease)".to_string())
+        ]);
     }
     if matches.is_present("memory") {
-        table.add_row(row!["Memory", &memory().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())]);
+        table.add_row(row![
+            "Memory",
+            &memory().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())
+        ]);
     }
     if matches.is_present("packages") {
         let manager = matches.value_of("packages").unwrap();
@@ -82,19 +101,27 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["Shell", &env("SHELL").unwrap()]);
     }
     if matches.is_present("terminal") {
-        table.add_row(row!["Terminal", &terminal().unwrap_or_else(|_| "N/A (could not read the appropriate /proc/?/status)".to_string())]);
+        table.add_row(row![
+            "Terminal",
+            &terminal().unwrap_or_else(
+                |_| "N/A (could not read the appropriate /proc/?/status)".to_string()
+            )
+        ]);
     }
     if matches.is_present("uptime") {
-        table.add_row(row!["Uptime", &uptime().unwrap_or_else(|_| "N/A (could not read /proc/uptime)".to_string())]);
+        table.add_row(row![
+            "Uptime",
+            &uptime().unwrap_or_else(|_| "N/A (could not read /proc/uptime)".to_string())
+        ]);
     }
     if matches.is_present("user") {
         table.add_row(row!["User", &env("USER").unwrap()]);
     }
     if matches.is_present("music") {
-        #[cfg(feature = "music")]
-        table.add_row(row!["Music", &music().unwrap_or_else(|_| "N/A (mpd is currently stopped or not running)".to_string())]);
+        #[cfg(any(feature = "music_mpd", feature = "music_playerctl"))]
+        table.add_row(row!["Music", &music().unwrap()]);
 
-        #[cfg(not(feature = "music"))]
+        #[cfg(not(any(feature = "music_mpd", feature = "music_playerctl")))]
         table.add_row(row!["Music", &music()]);
     }
     table.printstd();
@@ -104,16 +131,29 @@ pub fn main(matches: ArgMatches) {
 pub fn main(matches: ArgMatches) {
     if matches.is_present("cpu") {
         if matches.is_present("temperature") {
-            println!("CPU:          {} [{}]", cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string()), the_temp(&matches));
+            println!(
+                "CPU:          {} [{}]",
+                cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string()),
+                the_temp(&matches)
+            );
         } else {
-            println!("CPU:          {}", cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string()));
+            println!(
+                "CPU:          {}",
+                cpu().unwrap_or_else(|_| "N/A (could not read /proc/cpuinfo)".to_string())
+            );
         }
     }
     if matches.is_present("device") {
-        println!("Device:       {}", device().unwrap_or_else(|_| "N/A (could not read /sys/devices/virtual/dmi/id/product_name nor /sys/firmware/devicetree/base/model)".to_string()));
+        println!("Device:       {}", device().unwrap_or_else(|_| 
+            "N/A (could not read /sys/devices/virtual/dmi/id/product_name nor /sys/firmware/devicetree/base/model)"
+            .to_string()
+        ));
     }
     if matches.is_present("distro") {
-        println!("Distro:       {}", distro().unwrap_or_else(|_| "N/A (could not read /bedrock/etc/os-release, /etc/os-release, nor /usr/lib/os-release)".to_string()));
+        println!("Distro:       {}", distro().unwrap_or_else(|_| 
+            "N/A (could not read /bedrock/etc/os-release, /etc/os-release, nor /usr/lib/os-release)"
+            .to_string()
+        ));
     }
     if matches.is_present("editor") {
         println!("Editor:       {}", env("EDITOR").unwrap());
@@ -125,35 +165,60 @@ pub fn main(matches: ArgMatches) {
         println!("GPU:          {}", gpu().unwrap());
     }
     if matches.is_present("hostname") {
-        println!("Hostname:     {}", hostname().unwrap_or_else(|_| "N/A (could not read /etc/hostname)".to_string()));
+        println!(
+            "Hostname:     {}",
+            hostname().unwrap_or_else(|_| "N/A (could not read /etc/hostname)".to_string())
+        );
     }
     if matches.is_present("kernel") {
-        println!("Kernel:       {}", kernel().unwrap_or_else(|_| "N/A (could not read /proc/sys/kernel/osrelease)".to_string()));
+        println!(
+            "Kernel:       {}",
+            kernel()
+                .unwrap_or_else(|_| "N/A (could not read /proc/sys/kernel/osrelease)".to_string())
+        );
     }
     if matches.is_present("memory") {
-        println!("Memory:       {}", memory().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string()));
+        println!(
+            "Memory:       {}",
+            memory().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())
+        );
     }
     if matches.is_present("packages") {
         let manager = matches.value_of("packages").unwrap();
-        println!("Packages:     {}", packages(manager).unwrap_or_else(|_| format!("N/A (could not run {})", manager)));
+        println!(
+            "Packages:     {}",
+            packages(manager).unwrap_or_else(|_| format!("N/A (could not run {})", manager))
+        );
     }
     if matches.is_present("shell") {
         println!("Shell:        {}", env("SHELL").unwrap());
     }
     if matches.is_present("terminal") {
-        println!("Terminal:     {}", terminal().unwrap_or_else(|_| "N/A (could not read the appropriate /proc/?/status)".to_string()));
+        println!(
+            "Terminal:     {}",
+            terminal().unwrap_or_else(
+                |_| "N/A (could not read the appropriate /proc/?/status)".to_string()
+            )
+        );
     }
     if matches.is_present("uptime") {
-        println!("Uptime:       {}", uptime().unwrap_or_else(|_| "N/A (could not read /proc/uptime)".to_string()));
+        println!(
+            "Uptime:       {}",
+            uptime().unwrap_or_else(|_| "N/A (could not read /proc/uptime)".to_string())
+        );
     }
     if matches.is_present("user") {
         println!("User:         {}", env("USER").unwrap());
     }
     if matches.is_present("music") {
-        #[cfg(feature = "music")]
-        println!("Music:        {}", &music().unwrap_or_else(|_| "N/A (mpd is currently stopped or not running)".to_string()));
+        #[cfg(any(feature = "music_mpd", feature = "music_playerctl"))]
+        println!(
+            "Music:        {}",
+            &music()
+                .unwrap_or_else(|_| "N/A".to_string())
+        );
 
-        #[cfg(not(feature = "music"))]
+        #[cfg(not(any(feature = "music_mpd", feature = "music_playerctl")))]
         println!("Music:        {}", music());
     }
 }
