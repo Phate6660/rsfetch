@@ -7,9 +7,9 @@ use nixinfo::{
 fn the_temp(matches: &ArgMatches) -> String {
     let unit = matches.value_of("temperature").unwrap();
     if unit == "C" {
-        nixinfo::temp().unwrap() + "*C"
+        format!("{}{}", nixinfo::temp().unwrap()[0].1, "*C")
     } else if unit == "F" {
-        let pre = nixinfo::temp().unwrap().parse::<f64>().unwrap() * 9.0 / 5.0 + 32.0;
+        let pre = nixinfo::temp().unwrap()[0].1.parse::<f64>().unwrap() * 9.0 / 5.0 + 32.0;
         pre.to_string() + "*F"
     } else {
         format!("N/A ({} is not a supported unit)", unit)
