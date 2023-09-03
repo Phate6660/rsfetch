@@ -1,15 +1,18 @@
 use clap::ArgMatches;
 use nixinfo::{
-    cpu, device, distro, env, environment, gpu, hostname, kernel, memory, music, packages,
-    terminal, uptime,
+    cpu, device, distro, env, environment, gpu, hostname, kernel, memory_total, music, packages,
+    temp, terminal, uptime,
 };
 
 fn the_temp(matches: &ArgMatches) -> String {
     let unit = matches.value_of("temperature").unwrap();
+    let raw_temp_vec = temp().unwrap();
+    // TODO: Is there a better way to handle this without cloning?
+    let raw_temp = raw_temp_vec[0].clone();
     if unit == "C" {
-        nixinfo::temp().unwrap() + "*C"
+        raw_temp.1 + "*C"
     } else if unit == "F" {
-        let pre = nixinfo::temp().unwrap().parse::<f64>().unwrap() * 9.0 / 5.0 + 32.0;
+        let pre = raw_temp.1.parse::<f64>().unwrap() * 9.0 / 5.0 + 32.0;
         pre.to_string() + "*F"
     } else {
         format!("N/A ({} is not a supported unit)", unit)
@@ -87,7 +90,7 @@ pub fn main(matches: ArgMatches) {
     if matches.is_present("memory") {
         table.add_row(row![
             "Memory",
-            &memory().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())
+            &memory_total().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())
         ]);
     }
     if matches.is_present("packages") {
@@ -180,7 +183,7 @@ pub fn main(matches: ArgMatches) {
     if matches.is_present("memory") {
         println!(
             "Memory:       {}",
-            memory().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())
+            memory_total().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())
         );
     }
     if matches.is_present("packages") {
