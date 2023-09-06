@@ -1,7 +1,7 @@
 use clap::ArgMatches;
 use nixinfo::{
-    cpu, device, distro, env, environment, gpu, hostname, kernel, memory_total, music, packages,
-    temp, terminal, uptime,
+    cpu, device, distro, env, environment, gpu, hostname, kernel,
+    memory_total, memory_used, music, packages, temp, terminal, uptime,
 };
 
 fn the_temp(matches: &ArgMatches) -> String {
@@ -17,6 +17,12 @@ fn the_temp(matches: &ArgMatches) -> String {
     } else {
         format!("N/A ({} is not a supported unit)", unit)
     }
+}
+
+fn the_memory() -> String {
+    let used_memory = memory_used().unwrap();
+    let total_memory = memory_total().unwrap();
+    format!("{used_memory} (used)/{total_memory} (total)")
 }
 
 #[cfg(feature = "pretty_output")]
@@ -90,7 +96,7 @@ pub fn main(matches: ArgMatches) {
     if matches.is_present("memory") {
         table.add_row(row![
             "Memory",
-            &memory_total().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())
+            &the_memory()
         ]);
     }
     if matches.is_present("packages") {
@@ -183,7 +189,7 @@ pub fn main(matches: ArgMatches) {
     if matches.is_present("memory") {
         println!(
             "Memory:       {}",
-            memory_total().unwrap_or_else(|_| "N/A (could not read /proc/meminfo)".to_string())
+            the_memory()
         );
     }
     if matches.is_present("packages") {
