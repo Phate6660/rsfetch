@@ -13,7 +13,7 @@ music_playerctl = ["nixinfo/music_playerctl"]
 
 [dependencies]
 clap = "2.33.3"
-prettytable-rs = { version = "0.8.0", optional = true }
+prettytable-rs = { version = "0.10.0", optional = true }
 nixinfo = { git = "https://github.com/Phate6660/nixinfo" }
 
 [profile.release]
