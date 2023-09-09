@@ -78,7 +78,10 @@ pub fn main(matches: ArgMatches) {
         table.add_row(row!["Environment", &environment().unwrap()]);
     }
     if matches.is_present("gpu") {
-        table.add_row(row!["GPU", &gpu().unwrap()]);
+        let gpus = &gpu().unwrap();
+        for gpu in gpus {
+            table.add_row(row!["GPU", gpu]);
+        }
     }
     if matches.is_present("hostname") {
         table.add_row(row![
@@ -171,7 +174,10 @@ pub fn main(matches: ArgMatches) {
         println!("Environment:  {}", environment().unwrap());
     }
     if matches.is_present("gpu") {
-        println!("GPU:          {}", gpu().unwrap());
+        let gpus = gpu().unwrap();
+        for gpu in gpus {
+            println!("GPU:          {}", gpu);
+        }
     }
     if matches.is_present("hostname") {
         println!(
